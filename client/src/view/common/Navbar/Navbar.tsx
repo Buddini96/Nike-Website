@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 export class Navbar extends Component {
     render() {
         return (
-        <header className={"padding-x py-8 absolute z-10 w-full"}>
+        <header className={"padding-x py-5 absolute z-10 w-full pb-0"}>
             <nav className='flex justify-between items-center max-container'>
             <img className={"w-[129px] h-[29px] m-3"} src={logo} alt={''}></img>
 
