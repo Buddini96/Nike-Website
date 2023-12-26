@@ -92,19 +92,19 @@ export class Home extends Component {
 
                 </section>
 
-                <div className={"flex"}>
+                {/*<div className={"flex"}>*/}
 
-                    <div className={"flex flex-wrap justify-center items-center mx-auto  mt-5 mb-3 mx-auto"}>
+                {/*    <div className={"flex flex-wrap justify-center items-center mx-auto  mt-5 mb-3 mx-auto"}>*/}
 
-                        {
-                            data.map((product:any) => (
-                                <Product key = {product.id} data = {product}/>
-                            ))
-                        }
+                {/*        {*/}
+                {/*            data.map((product:any) => (*/}
+                {/*                <Product key = {product.id} data = {product}/>*/}
+                {/*            ))*/}
+                {/*        }*/}
 
-                    </div>
+                {/*    </div>*/}
 
-                </div>
+                {/*</div>*/}
             </>
 
         );
