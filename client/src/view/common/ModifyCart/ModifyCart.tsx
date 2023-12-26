@@ -41,7 +41,7 @@ export class ModifyCart extends Component<ModifyCartProps, ModifyCartState> {
         let index = ModifyCart.itemList.indexOf(item);
         ModifyCart.itemList.splice(index, 1);
         ModifyCart.itemList.push({
-            product:this.props.data.product, itemCount: itemCount
+                product:this.props.data.product, itemCount: itemCount
             }
         )
     }
@@ -66,14 +66,14 @@ export class ModifyCart extends Component<ModifyCartProps, ModifyCartState> {
         return (
             <div className={"w-full mt-1 p-[2.4px] bg-green-600 text-center text-[12px] "}>
                 <button className={"float-left text-[12px] bg-yellow-300 rounded-lg h-5 w-7"}
-                    onClick={onDecreaseItemCount}>
+                        onClick={onDecreaseItemCount}>
                     -</button>
                 <small className={"text-[12px]"}>
                     {/*1*/}
                     {itemCount}
                 </small>
                 <button className={"float-right text-[12px] bg-yellow-300 rounded-lg h-5 w-7"}
-                    onClick={onIncreaseItemCount}>
+                        onClick={onIncreaseItemCount}>
                     +</button>
             </div>
         );

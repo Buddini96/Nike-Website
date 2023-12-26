@@ -8,15 +8,24 @@
   },
 
   {
+
     "id" : 2,
-    "name" : "Tomatoes",
-    "price" : "540",
+    "name" : "Beans",
+    "price" : "375",
     "currency" : "LKR",
-    "image" : "tomato.webp"
+    "image" : "beans.jpg"
   },
 
   {
     "id" : 3,
+    "name" : "Beans",
+    "price" : "375",
+    "currency" : "LKR",
+    "image" : "beans.jpg"
+  },
+
+  {
+    "id" : 4,
     "name" : "Beans",
     "price" : "375",
     "currency" : "LKR",

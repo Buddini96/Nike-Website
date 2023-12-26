@@ -2,12 +2,6 @@ import {Component} from "react";
 // @ts-ignore
 import spanish from "../../../images/products/spinach.webp";
 import {ModifyCart} from "../ModifyCart/ModifyCart";
-// @ts-ignore
-import arrowRight from "../../../images/icons/arrow-right.svg"
-
-// @ts-ignore
- import shoe from "../../../images/products/big-shoe1.png"
-import { bigShoe1, bigShoe2, bigShoe3, customer1, customer2, shoe4, shoe5, shoe6, shoe7, thumbnailShoe1, thumbnailShoe2, thumbnailShoe3 } from "../../../images/products";
 
 interface ProductProps {
     data: any
@@ -16,6 +10,8 @@ interface ProductProps {
 interface ProductState {
     isActive: boolean
 }
+
+
 
 export class Product extends Component<ProductProps, ProductState> {
 
@@ -28,26 +24,11 @@ export class Product extends Component<ProductProps, ProductState> {
         }
     }
 
-
-
-
-
-
     render() {
         const {data} = this.props;
         const image = require('../../../images/products/' + data.image)
-
-
-        // @ts-ignore
-            // @ts-ignore
-            return (
-
+        return (
             <>
-
-                    {/*<div className={"flex"}>*/}
-                    {/*    <img src={bigShoe1} alt='bigShoe'  className={"w-[610px] h-[502px] absolute inset-3 right-[0px] "} />*/}
-                    {/*</div>*/}
-
                 <div className={" w-40 h-50 mr-2 mb-5 justify-center items-center border-gray-500 border-[1px]"}>
                     <div>
                         <img src={image} alt={''}/>
@@ -59,6 +40,7 @@ export class Product extends Component<ProductProps, ProductState> {
                                                text-[12px] pl-4 font-bold pt-1.5">
                                 {data.name}</h3>
                         </div>
+
                         <div className={"bg-yellow-400 ml-1 p-1 rounded-lg pr-2"}>
                             <h3 className="text-[12px] pl-2 font-bold">{data.price} <small className={"text-[5px]"}>
                             </small>{data.currency}</h3>
@@ -67,18 +49,18 @@ export class Product extends Component<ProductProps, ProductState> {
                     <div className={"flex justify-center pt-3 font-bold"}>
                         {
                             this.state.isActive ?
-                               <ModifyCart  data={{product: data, isAdded: this.state.isActive}}/> :
+                                <ModifyCart  data={{product: data, isAdded: this.state.isActive}}/> :
                                 <button className={"w-full mt p-[3px] text-[12px] bg-green-600 p-5 text-white hover:text-black"}
                                         onClick={this.AddToCartOnClick}>Add to Cart</button>
                         }
+
+
                     </div>
                 </div>
-
 
             </>
         );
     }
-
 
     private AddToCartOnClick = ():void => {
         // alert("Button on click")
