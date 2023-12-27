@@ -64,15 +64,17 @@ export class ModifyCart extends Component<ModifyCartProps, ModifyCartState> {
             this.setState({itemCount: ++itemCount})
         }
         return (
-            <div className={"w-full mt-1 p-[2.4px] bg-green-600 text-center text-[12px] "}>
-                <button className={"float-left text-[12px] bg-yellow-300 rounded-lg h-5 w-7"}
+            <div className={"w-full mt-1 p-[2.4px] bg-green-600 text-center font-[20px] rounded-md"}>
+                {/*w-full bg-red-500/80 hover:bg-red-500/90 px-6 py-2 rounded-md text-black font-medium text-center*/}
+                {/*w-full mt-1 p-[2.4px] bg-green-600 text-center text-[12px]*/}
+                <button className={"float-left font-[20px] bg-yellow-300 rounded-md h-8 w-9 font-bold"}
                         onClick={onDecreaseItemCount}>
                     -</button>
-                <small className={"text-[12px]"}>
+                <small className={"text-[17px] font-bold p-1"}>
                     {/*1*/}
                     {itemCount}
                 </small>
-                <button className={"float-right text-[12px] bg-yellow-300 rounded-lg h-5 w-7"}
+                <button className={"float-right font-[20px] bg-yellow-300 rounded-md h-8 w-9 font-bold"}
                         onClick={onIncreaseItemCount}>
                     +</button>
             </div>
