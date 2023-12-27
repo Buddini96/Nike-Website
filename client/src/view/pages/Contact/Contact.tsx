@@ -97,18 +97,19 @@ export class Contact extends Component {
                                 Add to cart
                             </button>
 
-                            <button className={"flex-grow flex justify-center bg-gray-300/60 hover:bg-gray-300/80 transition rounded-md"}>
+                            <button className={"flex p-3 justify-center bg-gray-300/60 hover:bg-gray-300/80 transition rounded-md"}>
                                 <img className={"opacity-50"}
                                      src={favourite} alt="add to favourites"/>
                             </button>
 
-                            <button className={"flex-grow flex justify-center bg-gray-300/60 hover:bg-gray-300/80 transition rounded-md"}>
+                            <button className={"flex p-3 justify-center bg-gray-300/60 hover:bg-gray-300/80 transition rounded-md"}>
                                 <img className={"opacity-50"}
                                      src={eye} alt="add to favourites"/>
                             </button>
                         </div>
                     </div>
                 </div>
+
 
 
             </section>
