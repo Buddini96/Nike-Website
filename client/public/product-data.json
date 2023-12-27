@@ -5,8 +5,24 @@
     "price" : "65000",
     "currency" : "LKR",
     "image" : "shoe4.jpg"
-  }
+  },
 
+  {
+    "id": 2,
+    "name": "Air Jordan",
+    "price": "37000",
+    "currency": "LKR",
+    "image": "shoep3.png"
+  },
+
+  {
+
+    "id": 3,
+    "name": "Air Max",
+    "price": "29000",
+    "currency": "LKR",
+    "image": "shoep4.jpg"
+  }
 
 
 

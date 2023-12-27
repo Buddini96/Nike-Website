@@ -38,8 +38,9 @@ export class Product extends Component<ProductProps, ProductState> {
         const {data} = this.props;
         const image = require('../../../images/products/' + data.image)
         return (
-            <>
-                <div className={"bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden"}>
+            <section className={""}>
+                <div className={"bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden items-center mr-5 mb-5 justify-center"}>
+
                     <div>
                         <img src={image} alt={''}/>
                     </div>
@@ -158,7 +159,7 @@ export class Product extends Component<ProductProps, ProductState> {
                 {/*    </div>*/}
                 {/*</div>*/}
 
-            </>
+            </section>
         );
     }
 

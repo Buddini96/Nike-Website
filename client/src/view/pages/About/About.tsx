@@ -2,7 +2,7 @@ import {Component} from "react";
 // @ts-ignore
 import arrowRight from "../../../images/icons/arrow-right.svg"
 // @ts-ignore
-import shoe2 from "../../../images/products/shoe2.jpg"
+import shoe2 from "../../../images/products/aboutBg.jpg"
 
 export class About extends Component {
     render() {
@@ -49,8 +49,9 @@ export class About extends Component {
                     
                 </div>
 
-                <div className="flex-1 flex justify-center items-center bg-gradient-to-r from-blue-200 to-green-100 rounded-md">
-                    <img src={shoe2} alt="shoe8" width={450} height={250} className='object-contain' />
+                <div className="flex-1 flex justify-center items-center rounded-md">
+                    {/*bg-gradient-to-r from-blue-200 to-green-100*/}
+                    <img src={shoe2} alt="shoe8" width={450} height={150} className='object-contain rounded-md' />
                 </div>
 
             </section>
