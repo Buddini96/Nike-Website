@@ -38,6 +38,13 @@ module.exports = {
       screens: {
         "wide": "1400px"
       }
+
+      // card: {
+      //   '.card': "bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg" +
+      //       "rounded-md overflow-hidden"
+      // }
+
+
     },
   },
   plugins: [],
