@@ -11,6 +11,8 @@ import arrowRight from "../../../images/icons/arrow-right.svg"
 
 // @ts-ignore
 import shoe from "../../../images/products/bg-shoes2.jpg"
+// @ts-ignore
+import background2 from "../../../images/bg2.webp"
 
 export const statistics = [
     { value: '1k+', label: 'Brands' },
@@ -51,60 +53,81 @@ export class Home extends Component {
                 <section id='home'
                          className='w-full flex xl:flex-row flex-col justify-center min-h-[50vh] gap-20 max-container '
                 >
-                    <div className=' max-xl:padding-x relative xl:w-2/5 flex flex-col justify-center items-start w-full'>
-                        <p className='text-xl font-montserrat text-coral-red'>
+                    <div className=' mt-10 max-xl:padding-x relative xl:w-2/5 flex flex-col justify-center items-start w-full '>
+                        <p className='text-2xl font-montserrat text-coral-red'>
                             Our Summer collections
                         </p>
 
-                        <h1 className='mt-10 font-palanquin text-7xl max-sm:text-[72px] max-sm:leading-[82px] font-bold -z-3'>
+                        <h1 className='mt-10 font-palanquin text-7xl max-sm:text-[72px] max-sm:leading-[82px] font-bold -z-3 '>
                           <span className='xl:bg-white xl:whitespace-nowrap relative z-10 pr-10'>
                             The New Arrival
                           </span>
                           <br />
-                            <span className='text-coral-red inline-block mt-3'>Nike</span> Shoes
+                            <span className='text-coral-red inline-block mt-5 mb-7'>Nike</span> Shoes
                         </h1>
                         <p className='font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm'>
                             Discover stylish Nike arrivals, quality comfort, and innovation for
                             your active life.
                         </p>
 
-                        <button className={"flex justify-center items-center gap-2 px-7 py-4 border font-montserrat text-lg " +
+                        <button className={"flex justify-center items-center gap-2 px-7 py-4 border font-montserrat text-lg mb-7" +
                             "leading-none bg-coral-red text-white border-coral-red rounded-full w-[200px]"}>
-                            <img src={arrowRight} alt='arrow right'  className={"ml-2 rounded-full bg-white w-5 h-5"} />
+                            <img src={arrowRight} alt='arrow right'  className={"ml-2 rounded-full bg-white w-5 h-5 "} />
                             Shop Now</button>
 
-                        <div className='flex justify-start items-start flex-wrap w-full mt-10 gap-16 pt-0'>
-                            {statistics.map((stat, index) => (
-                                <div key={index}>
-                                    <p className='text-4xl font-palanquin font-bold'>{stat.value}</p>
-                                    <p className='leading-7 font-montserrat text-slate-gray'>
-                                        {stat.label}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
+                        {/*<div className='flex justify-start items-start flex-wrap w-full mt-10 gap-16 pt-5'>*/}
+                        {/*    {statistics.map((stat, index) => (*/}
+                        {/*        <div key={index}>*/}
+                        {/*            <p className='text-4xl font-palanquin font-bold'>{stat.value}</p>*/}
+                        {/*            <p className='leading-7 font-montserrat text-slate-gray'>*/}
+                        {/*                {stat.label}*/}
+                        {/*            </p>*/}
+                        {/*        </div>*/}
+                        {/*    ))}*/}
+                        {/*</div>*/}
                     </div>
 
-                    <div className='relative flex-1 flex justify-center items-center '>
-                        <img src={shoe} alt='bigShoe'  className={"flex sm:gap-8 gap-6 absolute ml-[55px] pb-[230px] h-[1000px]  w-[100vw]"} />
+                    <div className='relative flex-1 flex justify-center items-center w-full'>
+                        <img src={shoe} alt='bigShoe'  className={"flex sm:gap-8 gap-6 absolute ml-[55px] pb-[230px] h-[1000px]  w-[150vw] w-full"} />
                     </div>
                     <br/>
 
                 </section>
 
-                {/*<div className={"flex"}>*/}
+                <section className={""}>
+                    {/*<div className={"relative"}>*/}
+                    {/*    <img src={background2} alt='background 2'  className={"absolute object-cover mix-blend-overlay"} />*/}
+                    {/*    <div className='flex justify-start items-start flex-wrap w-full mt-10 gap-16 pt-5'>*/}
+                    {/*        {statistics.map((stat, index) => (*/}
+                    {/*            <div key={index}>*/}
+                    {/*                <p className='text-4xl font-palanquin font-bold'>{stat.value}</p>*/}
+                    {/*                <p className='leading-7 font-montserrat text-slate-gray'>*/}
+                    {/*                    {stat.label}*/}
+                    {/*                </p>*/}
+                    {/*            </div>*/}
+                    {/*        ))}*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <div className={"w-full h-96  mt-[90px]"}>
+                        <div className={"relative"}>
+                            {/*<h1>Hello</h1>*/}
+                            <img src={background2} alt='background 2'  className={"absolute object-cover mix-blend-overlay"} />
+                            <div className='flex justify-start items-start flex-wrap w-full  gap-16 pt-[120px] ml-[60px]'>
+                                {statistics.map((stat, index) => (
+                                    <div key={index}>
+                                        <p className='text-4xl font-palanquin font-bold'>{stat.value}</p>
+                                        <p className='leading-8 font-montserrat text-gray ml-2'>
+                                            {stat.label}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
 
-                {/*    <div className={"flex flex-wrap justify-center items-center mx-auto  mt-5 mb-3 mx-auto"}>*/}
+                    </div>
 
-                {/*        {*/}
-                {/*            data.map((product:any) => (*/}
-                {/*                <Product key = {product.id} data = {product}/>*/}
-                {/*            ))*/}
-                {/*        }*/}
+                </section>
 
-                {/*    </div>*/}
-
-                {/*</div>*/}
             </>
 
         );

@@ -4,7 +4,7 @@
     "name" : "Nike Air",
     "price" : "65000",
     "currency" : "LKR",
-    "image" : "shoe4.jpg"
+    "image" : "Nike Air Max Correlate.webp"
   },
 
   {
@@ -12,7 +12,7 @@
     "name": "Air Jordan",
     "price": "37000",
     "currency": "LKR",
-    "image": "shoep3.png"
+    "image": "Nike Air Max Pulse Roam.webp"
   },
 
   {
@@ -21,7 +21,7 @@
     "name": "Air Max",
     "price": "29000",
     "currency": "LKR",
-    "image": "shoep4.jpg"
+    "image": "Nike Air Max 270.webp"
   }
 
 

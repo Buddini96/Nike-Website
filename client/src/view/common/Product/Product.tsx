@@ -36,7 +36,7 @@ export class Product extends Component<ProductProps, ProductState> {
 
     render() {
         const {data} = this.props;
-        const image = require('../../../images/products/' + data.image)
+        const image = require('../../../images/products/Men/' + data.image)
         return (
             <section className={""}>
                 <div className={"bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden items-center mr-5 mb-5 justify-center"}>
