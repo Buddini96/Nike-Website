@@ -74,17 +74,6 @@ export class Home extends Component {
                             "leading-none bg-coral-red text-white border-coral-red rounded-full w-[200px]"}>
                             <img src={arrowRight} alt='arrow right'  className={"ml-2 rounded-full bg-white w-5 h-5 "} />
                             Shop Now</button>
-
-                        {/*<div className='flex justify-start items-start flex-wrap w-full mt-10 gap-16 pt-5'>*/}
-                        {/*    {statistics.map((stat, index) => (*/}
-                        {/*        <div key={index}>*/}
-                        {/*            <p className='text-4xl font-palanquin font-bold'>{stat.value}</p>*/}
-                        {/*            <p className='leading-7 font-montserrat text-slate-gray'>*/}
-                        {/*                {stat.label}*/}
-                        {/*            </p>*/}
-                        {/*        </div>*/}
-                        {/*    ))}*/}
-                        {/*</div>*/}
                     </div>
 
                     <div className='relative flex-1 flex justify-center items-center w-full'>
@@ -94,7 +83,7 @@ export class Home extends Component {
 
                 </section>
 
-                <section className={""}>
+                <section id={"brand"}>
                     {/*<div className={"relative"}>*/}
                     {/*    <img src={background2} alt='background 2'  className={"absolute object-cover mix-blend-overlay"} />*/}
                     {/*    <div className='flex justify-start items-start flex-wrap w-full mt-10 gap-16 pt-5'>*/}
@@ -125,7 +114,6 @@ export class Home extends Component {
                         </div>
 
                     </div>
-
                 </section>
 
             </>
