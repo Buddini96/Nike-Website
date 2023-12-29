@@ -1,6 +1,10 @@
 import {Component} from "react";
 // @ts-ignore
 import coverImg from "../../../assets/images/bg9.jpg"
+// @ts-ignore
+import google from "../../../assets/icons/google.png"
+// @ts-ignore
+import nike from "../../../assets/icons/nike.png"
 
 export class Login extends Component {
     render() {
@@ -41,10 +45,12 @@ export class Login extends Component {
                     <img src={coverImg} className={"w-full h-full object-cover"}/>
                 </div>
 
-                <div className={"w-1/2 h-full bg-[#E0E0E0] flex flex-col p-20 justify-between"}>
-                    <h1 className={"text-xl text-[#060606] font-semibold"}>Nike</h1>
+                <div className={"w-1/2 h-full bg-[#F5F5F5] flex flex-col p-20 justify-between items-center"}>
 
-                <div className={"w-full flex flex-col max-w-[500px]"}>
+                    <h1 className={"w-full max-w-[500px] mx-auto text-xl text-[#060606] font-semibold mr-auto"}>Nike</h1>
+
+
+                <div className={"w-full flex flex-col  max-w-[500px]"}>
                     <div className={"w-full flex flex-col mb-2"}>
                     <h3 className={"text-3xl font-semibold mb-2"}>Login</h3>
                     <p className={"text-base mb-2"}>Welcome Back! Please enter your details.</p>
@@ -72,14 +78,26 @@ export class Login extends Component {
                     </div>
 
                     <div className={"w-full flex flex-col my-4"}>
-                        <button className={"w-full text-white bg-[#060606] rounded-md p-4 text-center flex items-center justify-center"}>
+                        <button className={"w-full my-2 font-semibold text-white bg-[#060606] rounded-md p-4 text-center flex items-center justify-center cursor-pointer"}>
                             Log in
                         </button>
+                        <button className={"w-full my-2 font-semibold text-[#060606] bg-white border  border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer"}>
+                            Register
+                        </button>
+                    </div>
+
+                    <div className={"w-full flex items-center justify-center relative py-2"}>
+                        <div className={"w-full h-[1px] bg-black/40"}></div>
+                        <p className={"text-lg absolute text-black/80 bg-[#F5F5F5]"}>or</p>
+                    </div>
+                    <div className={"w-full my-2 font-semibold text-[#060606] bg-white border  border-black/40 rounded-md p-4 text-center flex items-center justify-center cursor-pointer"}>
+                        <img src={google} className={"h-6 mr-2"}/>
+                        Sign In with Google
                     </div>
                 </div>
 
                     <div className={"w-full flex items-center justify-center "}>
-                        <p className={"text-sm font-normal text-[#0606060]"}>Don't have a account? <span className={"font-semibold underline underline-offset-2"}>Sign up for free</span></p>
+                        <p className={"text-sm font-normal text-[#060606]"}>Don't have a account? <span className={"font-semibold underline underline-offset-2"}>Sign up for free</span></p>
                     </div>
                 </div>
             </div>
