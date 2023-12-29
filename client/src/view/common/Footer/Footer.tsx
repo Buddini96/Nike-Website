@@ -1,16 +1,16 @@
 // @ts-ignore
-import logo from "../../../images/logo.png";
+import logo from "../../../assets/icons/logo.png";
 // @ts-ignore
 
-import  footerLogo from "../../../images/icons/footer-logo.svg"
+import  footerLogo from "../../../assets/icons/footer-logo.svg"
 // @ts-ignore
-import  facebook from "../../../images/icons/facebook.svg"
+import  facebook from "../../../assets/icons/facebook.svg"
 // @ts-ignore
-import  instagram from "../../../images/icons/instagram.svg"
+import  instagram from "../../../assets/icons/instagram.svg"
 // @ts-ignore
-import  twitter from "../../../images/icons/twitter.svg"
+import  twitter from "../../../assets/icons/twitter.svg"
 // @ts-ignore
-import copyrightSign from "../../../images/icons/copyright-sign.svg"
+import copyrightSign from "../../../assets/icons/copyright-sign.svg"
 
 export const socialMedia = [
     { src: facebook, alt: "facebook logo" },
@@ -71,7 +71,7 @@ export const Footer = () => {
                     <div className='flex items-center gap-5 mt-8'>
                         {socialMedia.map((icon) => (
                             <div
-                                className='flex justify-center items-center w-12 h-12 bg-white rounded-full'
+                                className='flex justify-center items-center w-12 h-12 bg-white rounded-full hover:bg-gray-400'
                                 key={icon.alt}
                             >
                                 <img src={icon.src} alt={icon.alt} width={24} height={24} />

@@ -1,18 +1,18 @@
 import {Component} from "react";
 // @ts-ignore
-import spanish from "../../../images/products/spinach.webp";
+import spanish from "../../../assets/products/spinach.webp";
 // @ts-ignore
-import tomato from "../../../images/products/tomato.webp";
+import tomato from "../../../assets/products/tomato.webp";
 // @ts-ignore
 import beans from "../../../images/products/beans.jpg";
 import {Product} from "../../common/Product/Product";
 // @ts-ignore
-import arrowRight from "../../../images/icons/arrow-right.svg"
+import arrowRight from "../../../assets/icons/arrow-right.svg"
 
 // @ts-ignore
-import shoe from "../../../images/products/bg-shoes2.jpg"
+import shoe from "../../../assets/products/bg-shoes2.jpg"
 // @ts-ignore
-import background2 from "../../../images/bg2.webp"
+import background2 from "../../../assets/images/bg2.webp"
 
 export const statistics = [
     { value: '1k+', label: 'Brands' },

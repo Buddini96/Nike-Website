@@ -1,13 +1,13 @@
 import {Component} from "react";
 // @ts-ignore
-import logo from '../../../images/header-logo.svg';
+import logo from '../../../assets/icons/header-logo.svg';
 // @ts-ignore
-import hamburger from "../../../images/hamburger.svg"
+import hamburger from "../../../assets/icons/hamburger.svg"
 import {Link} from "react-router-dom";
 // @ts-ignore
-import cart from "../../../images/icons/bag-shopping-solid.svg"
+import cart from "../../../assets/icons/bag-shopping-solid.svg"
 // @ts-ignore
-import favourites from "../../../images/icons/heart-regular.svg"
+import favourites from "../../../assets/icons/heart-regular.svg"
 // @ts-ignore
 
 

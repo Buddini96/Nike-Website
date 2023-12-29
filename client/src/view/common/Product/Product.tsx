@@ -1,17 +1,17 @@
 import {Component} from "react";
 // @ts-ignore
-import spanish from "../../../images/products/spinach.webp";
+import spanish from "../../../assets/images/products/spinach.webp";
 import {ModifyCart} from "../ModifyCart/ModifyCart";
 // @ts-ignore
-import star from "../../../images/cardIcons/star.svg"
+import star from "../../../assets/cardIcons/star.svg"
 // @ts-ignore
-import starHalfFill from "../../../images/cardIcons/star-half-fill.svg"
+import starHalfFill from "../../../assets/cardIcons/star-half-fill.svg"
 // @ts-ignore
-import starNoFill from "../../../images/cardIcons/star-no-fill.svg"
+import starNoFill from "../../../assets/cardIcons/star-no-fill.svg"
 // @ts-ignore
-import favourite from "../../../images/cardIcons/love.svg"
+import favourite from "../../../assets/cardIcons/love.svg"
 // @ts-ignore
-import eye from "../../../images/cardIcons/eye.svg"
+import eye from "../../../assest0s/cardIcons/eye.svg"
 
 interface ProductProps {
     data: any
@@ -36,7 +36,7 @@ export class Product extends Component<ProductProps, ProductState> {
 
     render() {
         const {data} = this.props;
-        const image = require('../../../images/products/Men/' + data.image)
+        const image = require('../../../assets/products/Men/' + data.image)
         return (
             <section className={""}>
                 <div className={"bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden items-center mr-5 mb-5 justify-center"}>

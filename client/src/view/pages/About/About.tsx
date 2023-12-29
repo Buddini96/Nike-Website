@@ -1,8 +1,8 @@
 import {Component} from "react";
 // @ts-ignore
-import arrowRight from "../../../images/icons/arrow-right.svg"
+import arrowRight from "../../../assets/icons/arrow-right.svg"
 // @ts-ignore
-import shoe2 from "../../../images/products/aboutBg.jpg"
+import shoe2 from "../../../assets/products/aboutBg.jpg"
 
 export class About extends Component {
     render() {
