@@ -42,9 +42,9 @@ export class Login extends Component {
                 </div>
 
                 <div className={"w-1/2 h-full bg-[#E0E0E0] flex flex-col p-20 justify-between"}>
-                    <h1 className={"text-xl text-[#0606060] font-semibold"}>Nike</h1>
+                    <h1 className={"text-xl text-[#060606] font-semibold"}>Nike</h1>
 
-                <div className={"w-full flex flex-col"}>
+                <div className={"w-full flex flex-col max-w-[500px]"}>
                     <div className={"w-full flex flex-col mb-2"}>
                     <h3 className={"text-3xl font-semibold mb-2"}>Login</h3>
                     <p className={"text-base mb-2"}>Welcome Back! Please enter your details.</p>
@@ -62,12 +62,23 @@ export class Login extends Component {
                             className={"w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"}/>
                     </div>
 
-                    <div className={"w-full"}>
+                    <div className={"w-full flex items-center justify-center"}>
+                        <div className={"w-full flex items-center"}>
+                           <input type={"checkbox"} className={"w-4 h-4 mr-2"}/>
+                            <p className={"text-sm"}>Remember Me for 30 days</p>
+                        </div>
 
+                        <p className={"text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2"}>Forgot Password ?</p>
+                    </div>
+
+                    <div className={"w-full flex flex-col my-4"}>
+                        <button className={"w-full text-white bg-[#060606] rounded-md p-4 text-center flex items-center justify-center"}>
+                            Log in
+                        </button>
                     </div>
                 </div>
 
-                    <div className={"w-full flex items-center justify-center"}>
+                    <div className={"w-full flex items-center justify-center "}>
                         <p className={"text-sm font-normal text-[#0606060]"}>Don't have a account? <span className={"font-semibold underline underline-offset-2"}>Sign up for free</span></p>
                     </div>
                 </div>
