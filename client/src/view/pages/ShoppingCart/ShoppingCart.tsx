@@ -7,30 +7,33 @@ interface  ShoppingCartProps {
 export class ShoppingCart extends Component<ShoppingCartProps> {
     render() {
         return (
-            <div className={"flex justify-center items-center min-h-full"}>
-                <table className={"w-full mx-6"}>
-                    <tr className={"bg-green-600"}>
-                        <th className={"text-[15px] font-normal border-black border-[0.5px] px-1"}>Id</th>
-                        <th className={"text-[15px] font-normal border-black border-[0.5px] px-1"}>Name</th>
-                        <th className={"text-[15px] font-normal border-black border-[0.5px] px-1"}>Unit Price</th>
-                        <th className={"text-[15px] font-normal border-black border-[0.5px] px-1"}>Quantity</th>
-                        <th className={"text-[15px] font-normal border-black border-[0.5px] px-1"}>Total Price</th>
-                    </tr>
+            <div className={" p-5 h-screen bg-gray-100"}>
+                <h1 className={"text-xl mb-2 font-bold text-center pb-3"}>Your Orders</h1>
+                <table className={"w-full"}>
+                    <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
+                        <tr className={""}>
+                            <th className={"p-3 text-sm font-semibold tracking-wide text-left"}>Id</th>
+                            <th className={"p-3 text-sm font-semibold tracking-wide text-left"}>Name</th>
+                            <th className={"p-3 text-sm font-semibold tracking-wide text-left"}>Unit Price</th>
+                            <th className={"p-3 text-sm font-semibold tracking-wide text-left"}>Quantity</th>
+                            <th className={"p-3 text-sm font-semibold tracking-wide text-left"}>Total Price</th>
+                        </tr>
+                    </thead>
 
                     {
                         this.props.itemList.length === 0 ?
                             <tr>
-                                <td colSpan={5} className={"border-black border-[0.5px] px-1"}>
+                                <td colSpan={5} className={""}>
                                     <p className={"text-center text-[15px]"}>No items to display</p>
                                 </td>
                             </tr>
                             : this.props.itemList.map((item) => (
-                                <tr className={"border-black border-[0.5px] px-1"}>
-                                    <td className={"text-[15px] border-black border-[0.5px] px-1"}>{item.product.id}</td>
-                                    <td className={"text-[15px] border-black border-[0.5px] px-1"}>{item.product.name}</td>
-                                    <td className={"text-[15px] border-black border-[0.5px] px-1"}>{item.product.price + '' + item.product.currency}</td>
-                                    <td className={"text-[15px] border-black border-[0.5px] px-1"}>{item.itemCount}</td>
-                                    <td className={"text-[15px] border-black border-[0.5px] px-1"}>{(item.product.price * item.itemCount) + '' + item.product.currency}</td>
+                                <tr className={"bg-white border-b-2"}>
+                                    <td className={"p-3 text-sm text-gray-700"}>{item.product.id}</td>
+                                    <td className={"p-3 text-sm text-gray-700"}>{item.product.name}</td>
+                                    <td className={"p-3 text-sm text-gray-700"}>{item.product.price + '' + item.product.currency}</td>
+                                    <td className={"p-3 text-sm text-gray-700"}>{item.itemCount}</td>
+                                    <td className={"p-3 text-sm text-gray-700"}>{(item.product.price * item.itemCount) + '' + item.product.currency}</td>
                                 </tr>
                             ))
                     }
