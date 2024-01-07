@@ -7,32 +7,12 @@ import shoe2 from "../../../assets/products/aboutBg.jpg"
 export class About extends Component {
     render() {
         return (
-            <section className="flex justify-between items-center max-lg:flex-col gap-10 w-full max-container" id="about-us">
-                {/*/!*<h1 className={"text-center text-red-800 font-bold"}>This is About Component</h1>*!/*/}
-                {/*<div className={"flex"}>*/}
-                {/*    <div className={"h-auto pt-5 pl-10 pr-10 mx-auto"}>*/}
-                {/*        <h2 className={"text-3xl text-green-900 underline decoration-2"}>About Us</h2>*/}
-                {/*        <p className={"text-[16px] pb-3 text-black"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.*/}
-                {/*            Architecto aut impedit laborum necessitatibus obcaecati qui quod sequi sunt vel! Architecto doloremque*/}
-                {/*            enim error magni maxime modi neque? Aperiam iste laudantium minima molestiae nesciunt, nihil*/}
-                {/*            soluta ullam velit vero voluptas. Aut ea facere fuga incidunt modi non nulla obcaecati sapiente voluptas.*/}
-                {/*            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, voluptatibus.*/}
-                {/*            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam culpa deserunt dolorem, enim modi nemo repellat repudiandae*/}
-                {/*            <br/>*/}
-                {/*            <br/>*/}
-                {/*            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolor dolores facere fugiat, ipsum,*/}
-                {/*            labore laudantium libero modi mollitia nesciunt possimus quidem. Ad alias, aspernatur aut beatae corporis cum*/}
-                {/*            dolorum eum illum labore maiores necessitatibus non quas suscipit tempora tempore tenetur vel voluptas. Aliquam,*/}
-                {/*            cum earum esse facilis, hic incidunt ipsum libero necessitatibus nemo neque nostrum obcaecati officiis pariatur*/}
-                {/*            quae quibusdam quis quos similique sit sunt vitae voluptas voluptate voluptates.*/}
-                {/*        </p>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
-                <div className="flex flex-1 flex-col">
+            <section className="flex justify-between items-center max-lg:flex-col gap-1 w-full max-container" id="about-us">
+                <div className="flex flex-1 flex-col pb-48">
                     <h2 className='mt-5 font-palanquin text-4xl capitalize lg:max-w-lg font-bold'>
-          <span className=' xl:bg-white xl:whitespace-nowrap relative z-10 pr-10'>Discover <span className='text-coral-blue inline-block mb-3'>Premium </span>
-          </span>
+                      <span className=' xl:bg-white xl:whitespace-nowrap relative z-10 pr-10 pb-5'>Discover
+                          <span className='pl-4 text-coral-blue inline-block mb-3'>Premium </span>
+                      </span>
                         <br />
                         <span className='text-coral-blue inline-block mt-3'>Footwear</span>
                     </h2>
@@ -51,7 +31,7 @@ export class About extends Component {
 
                 <div className="flex-1 flex justify-center items-center rounded-md">
                     {/*bg-gradient-to-r from-blue-200 to-green-100*/}
-                    <img src={shoe2} alt="shoe8" width={450} height={150} className='object-contain rounded-md' />
+                    <img src={shoe2} alt="shoe8"  className='object-contain rounded-md w-[80%] h-min-[1%]' />
                 </div>
 
             </section>
