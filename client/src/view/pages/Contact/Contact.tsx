@@ -28,13 +28,15 @@ export class Contact extends Component {
         // @ts-ignore
         // @ts-ignore
         return (
-            <div className={"antialiased bg-gray-100"}>
-                <div className={"flex w-full min-h-screen justify-center items-center"}>
-                    <div className={"flex flex-col space-y-6 bg-cyan-700 w-full max-w-4xl p-8 rounded-xl shadow-lg text-white"}>
+            <div className={"antialiased "}>
+                <div className={"flex w-full min-h-screen justify-center items-center h-[50px]"}>
+                    <div className={"mb-16 flex flex-col md:flex-row md:space-x-8 md:space-y-0 space-y-6 bg-cyan-700 " +
+                        "w-full max-w-5xl sm:p-8 pt-5 pb-1 rounded-xl shadow-lg text-white overflow-hidden"}>
                         <div className={"flex flex-col space-y-8 justify-between"}>
                             <div>
                                 <h1 className={"font-bold text-4xl"}>Contact Us</h1>
-                                <p className={"pt-2 text-cyan-100 text-sm"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, cupiditate.</p>
+                                <p className={"pt-2 text-cyan-100 text-sm"}>Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit. Animi, cupiditate.</p>
                             </div>
                             {/*icons*/}
                             <div className={"flex flex-col space-y-6"}>
@@ -62,15 +64,45 @@ export class Contact extends Component {
                             </div>
 
                             <div className={"flex space-x-4 text-lg"}>
-                                <img className={"h-7 w-7 m-1.5 pt-0.1 text-white"} src={facebook} alt={''}></img>
-                                <img className={"h-7 w-7 m-1.5 pt-0.1 text-white"} src={twitter} alt={''}></img>
-                                <img className={"h-7 w-7 m-1.5 pt-0.1 text-white"} src={instagram} alt={''}></img>
-                                <img className={"h-7 w-7 m-1.5 pt-0.1 text-white"} src={linkedin} alt={''}></img>
-
-
+                                <img className={"h-6 w-6 m-1.5 pt-0.1 text-white"} src={facebook} alt={''}></img>
+                                <img className={"h-6 w-6 m-1.5 pt-0.1 text-white"} src={twitter} alt={''}></img>
+                                <img className={"h-6 w-6 m-1.5 pt-0.1 text-white"} src={instagram} alt={''}></img>
+                                <img className={"h-6 w-6 m-1.5 pt-0.1 text-white"} src={linkedin} alt={''}></img>
                             </div>
                         </div>
-                        <div></div>
+
+                        <div className={"relative"}>
+                            <div className={"absolute z-0 w-40 h-40 bg-teal-400 rounded-full -right-28 -top-28"}></div>
+                            <div className={"absolute z-0 w-40 h-40 bg-teal-400 rounded-full -left-28 -bottom-16"}></div>
+                            <div className={"relative z-10 bg-white rounded-xl shadow-lg p-8 text-gray-600 md:w-100"}>
+                                <form className={"flex flex-col space-y-4"}>
+                                    <div>
+                                        <label className={"text-sm"} htmlFor={""}>Your Name : </label>
+                                        <input placeholder={"Your Name"} className={"ring-1 ring-gray-300 w-full " +
+                                            "rounded-md px-4 py-2 mt-2  px-4 outline-none focus:ring-2 " +
+                                            "focus:ring-teal-300"} type={"text"}/>
+                                    </div>
+
+                                    <div>
+                                        <label className={"text-sm"} htmlFor={""}>Email Address: </label>
+                                        <input placeholder={"Your Email"} className={"ring-1 ring-gray-300 w-full " +
+                                            "rounded-md px-4 py-2 mt-2 px-4 outline-none focus:ring-2 " +
+                                            "focus:ring-teal-300"} type={"email"}/>
+                                    </div>
+
+                                    <div>
+                                        <label className={"text-sm"} htmlFor={""}>Message : </label>
+                                        <textarea placeholder={"Message"} rows={4} className={"ring-1 ring-gray-300 " +
+                                            "w-full rounded-md px-4 py-2 mt-2 px-4 outline-none focus:ring-2 " +
+                                            "focus:ring-teal-300"}/>
+                                    </div>
+
+                                    <button className={"inline-block self-end bg-cyan-700 text-white font-bold " +
+                                        "rounded-md px-6 py-2 uppercase text-sm"}>Send Message</button>
+
+                                </form>
+                            </div>
+                        </div>
 
                     {/*<div className={"p-2"}>*/}
                     {/*    <h2 className={"text-3xl text-green-900 text-center underline decoration-2"}>Contact Us</h2>*/}
