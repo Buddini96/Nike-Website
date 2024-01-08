@@ -29,10 +29,10 @@ export class Contact extends Component {
         // @ts-ignore
         return (
             <div className={"antialiased "}>
-                <div className={"flex w-full min-h-screen justify-center items-center h-[50px]"}>
-                    <div className={"mb-16 flex flex-col md:flex-row md:space-x-8 md:space-y-0 space-y-6 bg-cyan-700 " +
+                <div className={"flex w-full justify-center items-center"}>
+                    <div className={"mb-16 flex flex-col md:flex-row md:space-x-8 md:space-y-0 space-y-6 bg-coral-red " +
                         "w-full max-w-5xl sm:p-8 pt-5 pb-1 rounded-xl shadow-lg text-white overflow-hidden"}>
-                        <div className={"flex flex-col space-y-8 justify-between"}>
+                        <div className={"flex flex-col space-y-8 justify-between "}>
                             <div>
                                 <h1 className={"font-bold text-4xl"}>Contact Us</h1>
                                 <p className={"pt-2 text-cyan-100 text-sm"}>Lorem ipsum dolor sit amet,
@@ -97,7 +97,7 @@ export class Contact extends Component {
                                             "focus:ring-teal-300"}/>
                                     </div>
 
-                                    <button className={"inline-block self-end bg-cyan-700 text-white font-bold " +
+                                    <button className={"inline-block self-end bg-coral-red text-white font-bold " +
                                         "rounded-md px-6 py-2 uppercase text-sm"}>Send Message</button>
 
                                 </form>
