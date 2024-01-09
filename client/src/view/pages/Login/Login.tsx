@@ -5,6 +5,9 @@ import coverImg from "../../../assets/images/bg9.jpg"
 import google from "../../../assets/icons/google.png"
 // @ts-ignore
 import nike from "../../../assets/icons/nike.png"
+// @ts-ignore
+import nikeLogo from "../../../assets/icons/nikeLogo.png"
+
 
 export class Login extends Component {
     render() {
@@ -47,8 +50,9 @@ export class Login extends Component {
 
                 <div className={"w-1/2 h-full bg-[#F5F5F5] flex flex-col p-20 justify-between items-center"}>
 
-                    <h1 className={"w-full max-w-[500px] mx-auto text-xl text-[#060606] font-semibold mr-auto"}>Nike</h1>
-
+                    {/*<h1 className={"w-full max-w-[500px] mx-auto text-xl text-[#060606] font-semibold mr-auto"}>Nike</h1>*/}
+                <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>
+                    {/*mr-[27rem]*/}
 
                 <div className={"w-full flex flex-col  max-w-[500px]"}>
                     <div className={"w-full flex flex-col mb-2"}>

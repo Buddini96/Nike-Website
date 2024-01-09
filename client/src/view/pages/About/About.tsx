@@ -22,10 +22,11 @@ export class About extends Component {
                         Immerse yourself in our newest collections, delivering unparalleled comfort and unrivaled style. Become a part of the Nike community today and experience the pinnacle of sportswear excellence.
                     </p>
 
-                    <button className={"mt-11 flex justify-center items-center gap-2 px-7 py-4 border font-montserrat text-lgflex justify-center items-center gap-2 px-7 py-4 border font-montserrat text-lg leading-none " +
-                        "leading-none bg-coral-red text-white border-coral-red rounded-full w-[200px]"}>
-                        <img src={arrowRight} alt='arrow right'  className={"ml-2 rounded-full bg-white w-5 h-5"} />
-                        View Details</button>
+                    <button className={"mt-11 flex justify-center items-center gap-2 px-7 py-4 border font-montserrat " +
+                        "text-lgflex justify-center items-center gap-2 px-7 py-4 border font-montserrat text-lg " +
+                        "leading-none " + "leading-none bg-coral-red text-white border-coral-red rounded-full w-[200px]"}>
+                        <img src={arrowRight} alt='arrow right'  className={"ml-1 rounded-full bg-white w-5 h-5"} />
+                        View </button>
                     
                 </div>
 
