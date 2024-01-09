@@ -10,7 +10,7 @@ import img4 from "../../../assets/images/galleryImg/img25.jpg"
 // @ts-ignore
 import img5 from "../../../assets/images/galleryImg/img5.jpg"
 // @ts-ignore
-import img6 from "../../../assets/images/galleryImg/img36.jpg"
+import img6 from "../../../assets/images/galleryImg/jk.jpg"
 // @ts-ignore
 import img7 from "../../../assets/images/galleryImg/img7.jpg"
 // @ts-ignore
@@ -31,11 +31,11 @@ import img14 from "../../../assets/images/galleryImg/img35.jpg"
 // @ts-ignore
 import img15 from "../../../assets/images/galleryImg/img23.jpg"
 // @ts-ignore
-import img16 from "../../../assets/images/galleryImg/jk.jpg"
+import img16 from "../../../assets/images/galleryImg/img36.jpg"
 // @ts-ignore
 import img17 from "../../../assets/images/galleryImg/img17.jpg"
 // @ts-ignore
-import img18 from "../../../assets/images/galleryImg/img21.jpg"
+import img18 from "../../../assets/images/galleryImg/img14.jpg"
 // @ts-ignore
 import img19 from "../../../assets/images/galleryImg/img19.jpg"
 // @ts-ignore
