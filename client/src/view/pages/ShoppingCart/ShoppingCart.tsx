@@ -7,6 +7,7 @@ interface  ShoppingCartProps {
 export class ShoppingCart extends Component<ShoppingCartProps> {
     render() {
         return (
+
             <div className={" p-5 h-screen bg-gray-100"}>
                 <h1 className={"text-xl mb-2 font-bold text-center pb-3"}>Your Orders</h1>
                 <table className={"w-full"}>

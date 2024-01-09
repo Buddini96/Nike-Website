@@ -30,10 +30,10 @@ export class Navbar extends Component {
                     <Link to={'/images'}>Products</Link>
                 </li>
                 <li className={"inline-block mr-3 text-[18px] "}>
-                    <Link to={'/contact'}>Contact Us</Link>
+                    <Link to={'/Gallery'}>Gallery</Link>
                 </li>
                 <li className={"inline-block mr-3 text-[18px] "}>
-                    <Link to={'/ShoppingCart'}>MyCart</Link>
+                    <Link to={'/contact'}>Contact Us</Link>
                 </li>
             </ul>
 

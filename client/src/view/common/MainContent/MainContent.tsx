@@ -4,8 +4,10 @@ import {About} from "../../pages/About/About";
 import {Home} from "../../pages/Home/Home";
 import {Contact} from "../../pages/Contact/Contact";
 import {Images} from "../../pages/Images/Images";
+
 import {ShoppingCart} from "../../pages/ShoppingCart/ShoppingCart";
 import {ModifyCart} from "../ModifyCart/ModifyCart";
+import {Gallery} from "../../pages/Gallery/Gallery";
 
 export class MainContent extends Component {
     render() {
@@ -19,6 +21,7 @@ export class MainContent extends Component {
                     <Route path="/About" Component={About}></Route>
                     <Route path="/Images" Component={Images}></Route>
                     <Route path="/Contact" Component={Contact}></Route>
+                    <Route path="/Gallery" Component={Gallery}></Route>
                     <Route path="/ShoppingCart" element={<ShoppingCart itemList={ModifyCart.itemList} />}></Route>
                 </Routes>
 
