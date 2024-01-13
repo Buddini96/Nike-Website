@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 // @ts-ignore
 import coverImg from "../../../assets/images/bg9.jpg"
 // @ts-ignore
@@ -7,9 +7,59 @@ import google from "../../../assets/icons/google.png"
 import nike from "../../../assets/icons/nike.png"
 // @ts-ignore
 import nikeLogo from "../../../assets/icons/nikeLogo.png"
+import {Link} from "react-router-dom";
 
 
 export class Login extends Component {
+    // @ts-ignore
+    constructor(props) {
+        super(props);
+        this.state = {
+            email:"",
+            password:""
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    // @ts-ignore
+    handleSubmit(e) {
+        e.preventDefault();
+        // @ts-ignore
+        const {email: email, password: password} = this.state;
+        console.log(email, password);
+
+        // @ts-ignore
+        fetch("http://localhost:4001/login/", {
+            method: "POST",
+            // @ts-ignore
+            crossDomain: true,
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data, "userRegister");
+                if (data.status == "ok") {
+                    alert("Login Successful");
+                    // @ts-ignore
+                    window.localStorage.setItem("token", data.data);
+                    window.location.href="/userDashboard";
+
+                } else {
+                    alert("Something went wrong");
+                }
+            });
+
+    };
+
     render() {
         return (
             // <div className={"flex h-screen bg-black"}>
@@ -54,6 +104,7 @@ export class Login extends Component {
                 <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>
                     {/*mr-[27rem]*/}
 
+                <form onSubmit={this.handleSubmit}>
                 <div className={"w-full flex flex-col  max-w-[500px]"}>
                     <div className={"w-full flex flex-col mb-2"}>
                     <h3 className={"text-3xl font-semibold mb-2"}>Login</h3>
@@ -64,11 +115,13 @@ export class Login extends Component {
                         <input
                             type={"email"}
                             placeholder={"Email"}
+                            onChange={(e) => this.setState({email: e.target.value})}
                             className={"w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"}/>
 
                         <input
                             type={"password"}
                             placeholder={"Password"}
+                            onChange={(e) => this.setState({password: e.target.value})}
                             className={"w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"}/>
                     </div>
 
@@ -82,11 +135,15 @@ export class Login extends Component {
                     </div>
 
                     <div className={"w-full flex flex-col my-4"}>
-                        <button className={"w-full my-2 font-semibold text-white bg-[#060606] rounded-md p-4 text-center flex items-center justify-center cursor-pointer"}>
-                            Log in
+                        <button type={"submit"} className={"w-full my-2 font-semibold text-white bg-[#060606] rounded-md p-4 text-center flex items-center justify-center cursor-pointer"}>
+                            <Link to={'/userDashboard'}>
+                                Log in
+                            </Link>
                         </button>
                         <button className={"w-full my-2 font-semibold text-[#060606] bg-white border  border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer"}>
+                            <Link to={'/Register'}>
                             Register
+                            </Link>
                         </button>
                     </div>
 
@@ -99,6 +156,7 @@ export class Login extends Component {
                         Sign In with Google
                     </div>
                 </div>
+                 </form>
 
                     <div className={"w-full flex items-center justify-center "}>
                         <p className={"text-sm font-normal text-[#060606]"}>Don't have a account? <span className={"font-semibold underline underline-offset-2"}>Sign up for free</span></p>

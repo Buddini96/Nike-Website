@@ -3,9 +3,12 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {DefaultLayout} from "./view/common/DefaultLayout/DefaultLayout";
 import {Login} from "./view/pages/Login/Login";
+import {Register} from "./view/pages/Register/Register";
+import {UserDashboard} from "./view/admin/userDashboard";
 
 function App() {
-  return (
+  // @ts-ignore
+    return (
       /*<h1 className="text-7xl font-bold underline">
         Hello world!
       </h1>*/
@@ -34,6 +37,9 @@ function App() {
           <Routes>
               <Route path={"/*"} Component={DefaultLayout}></Route>
               <Route path={"/login"} Component={Login}></Route>
+              <Route path={"/Register"} Component={Register}></Route>
+              <Route path={"/userDashboard"} Component={UserDashboard}></Route>
+
           </Routes>
       </BrowserRouter>
   );
