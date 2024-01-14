@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 // @ts-ignore
 import spanish from "../../../assets/products/spinach.webp";
 // @ts-ignore
@@ -13,6 +13,7 @@ import arrowRight from "../../../assets/icons/arrow-right.svg"
 import shoe from "../../../assets/products/bg-shoes2.jpg"
 // @ts-ignore
 import background2 from "../../../assets/images/bg2.webp"
+import {Link} from "react-router-dom";
 
 export const statistics = [
     { value: '1k+', label: 'Brands' },
@@ -84,6 +85,11 @@ export class Home extends Component {
                 </section>
 
                 <section id={"brand"}>
+                    <button>
+                        <Link to={'/AdminDashboard'}>
+                            Admin
+                        </Link>
+                    </button>
                     {/*<div className={"relative"}>*/}
                     {/*    <img src={background2} alt='background 2'  className={"absolute object-cover mix-blend-overlay"} />*/}
                     {/*    <div className='flex justify-start items-start flex-wrap w-full mt-10 gap-16 pt-5'>*/}

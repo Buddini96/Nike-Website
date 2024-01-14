@@ -4,7 +4,9 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {DefaultLayout} from "./view/common/DefaultLayout/DefaultLayout";
 import {Login} from "./view/pages/Login/Login";
 import {Register} from "./view/pages/Register/Register";
-import {UserDashboard} from "./view/admin/userDashboard";
+import {UserDashboard} from "./view/user/userDashboard";
+import {AdminDefaultLayout} from "./view/admin/AdminDefaultLayout/AdminDefaultLayout";
+import {AdminDashboard} from "./view/admin/AdminDashboard";
 
 function App() {
     const isLoggedIn = window.localStorage.getItem("loggedIn");
@@ -46,6 +48,10 @@ function App() {
               <Route path={"/login"} Component={Login}></Route>
               <Route path={"/Register"} Component={Register}></Route>
               <Route path={"/userDashboard"} Component={UserDashboard}></Route>
+              {/*<Route path={"/AdminDefaultLayout"} Component={AdminDefaultLayout}></Route>*/}
+              <Route path={"/AdminDashboard"} Component={AdminDashboard}></Route>
+
+
 
           </Routes>
       </BrowserRouter>
