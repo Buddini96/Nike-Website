@@ -108,7 +108,7 @@ export class Login extends Component {
                    {/* /!*mr-[27rem]*!/*/}
                    {/*<a/>*/}
 
-                        <a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer">
+                        <a href="/" target="_blank" rel="noopener noreferrer">
                             <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>
                         </a>
                     <form onSubmit={this.handleSubmit}>
