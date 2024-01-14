@@ -7,7 +7,12 @@ import {Register} from "./view/pages/Register/Register";
 import {UserDashboard} from "./view/admin/userDashboard";
 
 function App() {
+    const isLoggedIn = window.localStorage.getItem("loggedIn");
   // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
     return (
       /*<h1 className="text-7xl font-bold underline">
         Hello world!
@@ -35,7 +40,9 @@ function App() {
           {/*<Login/>*/}
 
           <Routes>
-              <Route path={"/*"} Component={DefaultLayout}></Route>
+
+            {/*<Route path={"/*"} Component={DefaultLayout}></Route>*/}
+              <Route path={"/*"} element={isLoggedIn =="true" ? <UserDashboard/> : <DefaultLayout/>}></Route>
               <Route path={"/login"} Component={Login}></Route>
               <Route path={"/Register"} Component={Register}></Route>
               <Route path={"/userDashboard"} Component={UserDashboard}></Route>

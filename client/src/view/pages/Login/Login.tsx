@@ -51,6 +51,8 @@ export class Login extends Component {
                     alert("Login Successful");
                     // @ts-ignore
                     window.localStorage.setItem("token", data.data);
+                    // @ts-ignore
+                    window.localStorage.setItem("loggedIn", true);
                     window.location.href="/userDashboard";
 
                 } else {
@@ -100,10 +102,15 @@ export class Login extends Component {
 
                 <div className={"w-1/2 h-full bg-[#F5F5F5] flex flex-col p-20 justify-between items-center"}>
 
-                    {/*<h1 className={"w-full max-w-[500px] mx-auto text-xl text-[#060606] font-semibold mr-auto"}>Nike</h1>*/}
-                    <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>
-                    {/*mr-[27rem]*/}
+                   {/* /!*<h1 className={"w-full max-w-[500px] mx-auto text-xl text-[#060606] font-semibold mr-auto"}>Nike</h1>*!/*/}
+                   {/* <a href="https://example.com" target="_blank" rel="noopener noreferrer">*/}
+                   {/* <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>*/}
+                   {/* /!*mr-[27rem]*!/*/}
+                   {/*<a/>*/}
 
+                        <a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer">
+                            <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>
+                        </a>
                     <form onSubmit={this.handleSubmit}>
                         <div className={"w-full flex flex-col  max-w-[500px]"}>
                             <div className={"w-full flex flex-col mb-2"}>

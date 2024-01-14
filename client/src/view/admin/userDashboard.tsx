@@ -39,6 +39,11 @@ export class UserDashboard extends Component {
             });
     };
 
+    logOut=() => {
+        window.localStorage.clear();
+        window.location.href="/login";
+}
+
 
     // componentDidMount() {
     //     fetch("http://localhost:4001/userData", {
@@ -78,12 +83,13 @@ export class UserDashboard extends Component {
         // @ts-ignore
         const {userData} = this.state;
         return (
-            <div className={"text-black"}>
+            <div className={"text-black justify-center items-center p-20"}>
 
                Name
                 <h1 className={"font-bold text-xl"}>{userData.name}</h1>
                 Email
-                <h1 className={"font-bold text-xl"}>{userData.email}</h1>
+                <h1 className={"font-bold text-xl"}>{userData.email}</h1><br/>
+                <button onClick={this.logOut} className={"border-2 bg-gray-400 p-2 border-black"}>Log Out</button>
             </div>
         );
     }
