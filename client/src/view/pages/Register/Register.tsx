@@ -27,41 +27,46 @@ export class Register extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     // @ts-ignore
-    handleSubmit(e) {
-        // @ts-ignore
-        e.preventDefault();
-        // @ts-ignore
-        const {name: name, email: email, password: password} = this.state;
-        console.log(name, email, password);
-
-        // @ts-ignore
-        fetch("http://localhost:4001/register/", {
-            method: "POST",
-            // @ts-ignore
-            crossDomain: true,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                "Access-Control-Allow-Origin": "*",
-            },
-            body: JSON.stringify({
-                name,
-                email,
-                password,
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data, "userRegister");
-                if (data.status == "ok") {
-                    alert("Registration Successful");
-                } else {
-                    alert("Something went wrong");
-                }
-            });
-
-    };
-
+    // handleSubmit(e) {
+    //
+    //         e.preventDefault();
+    //         // @ts-ignore
+    //         const {name: name, email: email, password: password} = this.state;
+    //         console.log(name, email, password);
+    //         // @ts-ignore
+    //         const {userType: userType, setUserType: setUserType} = this.state;
+    //         // @ts-ignore
+    //         const {secretKey: secretKey, setSecretKey: setSecretKey} = this.state;
+    //
+    //         // @ts-ignore
+    //         fetch("http://localhost:4001/register/", {
+    //             method: "POST",
+    //             // @ts-ignore
+    //             crossDomain: true,
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Accept: "application/json",
+    //                 "Access-Control-Allow-Origin": "*",
+    //             },
+    //             body: JSON.stringify({
+    //                 name,
+    //                 email,
+    //                 password,
+    //             }),
+    //         })
+    //             .then((res) => res.json())
+    //             .then((data) => {
+    //                 console.log(data, "userRegister");
+    //                 if (data.status == "ok") {
+    //                     alert("Registration Successful");
+    //                 } else {
+    //                     alert("Something went wrong");
+    //                 }
+    //             });
+    //
+    //
+    //
+    // };
     // handleSubmit = async (e) => {
     //     e.preventDefault();
     //
@@ -99,12 +104,53 @@ export class Register extends Component {
     //     }
     // };
 
+    handleSubmit(e) {
+        // @ts-ignore
+        e.preventDefault();
+
+        // @ts-ignore
+        const { name, email, password, userType, secretKey } = this.state;
+
+        if (userType === "Admin" && secretKey !== "Buddini") {
+            // Invalid Admin case
+            alert("Invalid Admin");
+        } else {
+            // @ts-ignore
+            fetch("http://localhost:4001/register/", {
+                method: "POST",
+                // @ts-ignore
+                crossDomain: true,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                    userType
+                }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data, "userRegister");
+                    if (data.status === "ok") {
+                        alert("Registration Successful");
+                    } else {
+                        alert("Something went wrong");
+                    }
+                });
+        }
+    };
+
     render() {
 
         // @ts-ignore
         // @ts-ignore
         // @ts-ignore
         // @ts-ignore
+        const {userType} = this.state;
         return (
 
             <div className={"w-full h-screen flex items-start"}>
@@ -116,15 +162,33 @@ export class Register extends Component {
                     <img src={coverImg} className={"w-full h-full object-cover"}/>
                 </div>
 
-                <div className={"w-1/2 h-full bg-[#F5F5F5] flex flex-col p-20 justify-between items-center"}>
+                <div className={"w-1/2 h-full bg-[#F5F5F5] flex flex-col px-5 justify-between items-center"}>
 
                     {/*/!*<h1 className={"w-full max-w-[500px] mx-auto text-xl text-[#060606] font-semibold mr-auto"}>Nike</h1>*!/*/}
                     {/*<img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>*/}
                     {/*/!*mr-[27rem]*!/*/}
 
                     <a href="/" target="_blank" rel="noopener noreferrer">
-                        <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>
+                        <img className={"w-[90px] h-[70px] py-3"} src={nikeLogo}/>
                     </a>
+
+                    <div>
+                        <input
+                            type={"radio"}
+                            name={"UserType"}
+                            value={"User"}
+                            onChange={(e) => this.setState({ userType: e.target.value })}
+                        />{" "}
+                        User
+
+                        <input className={""}
+                               type={"radio"}
+                               name={"UserType"}
+                               value={"Admin"}
+                               onChange={(e) => this.setState({ userType: e.target.value })}
+                        /> {" "}
+                        Admin
+                    </div>
 
                     <form onSubmit={this.handleSubmit}>
                         <div className={"w-full flex flex-col  max-w-[500px]"}>
@@ -135,9 +199,15 @@ export class Register extends Component {
 
 
                             <div className={"w-full flex flex-col"}>
-
+                                {userType === "Admin" && (
+                                    <input
+                                        type={"text"}
+                                        placeholder={"Secret Key"}
+                                        onChange={(e) => this.setState({ secretKey: e.target.value })}
+                                        className={"w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"}
+                                    />
+                                )}
                                 <input
-
                                     type={"text"}
                                     placeholder={"Name"}
                                     onChange={(e) => this.setState({name: e.target.value})}

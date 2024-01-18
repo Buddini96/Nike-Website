@@ -16,7 +16,8 @@ export class Login extends Component {
         super(props);
         this.state = {
             email:"",
-            password:""
+            password:"",
+            admin: false,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,6 +29,8 @@ export class Login extends Component {
         // @ts-ignore
         const {email: email, password: password} = this.state;
         console.log(email, password);
+        // @ts-ignore
+        const { admin } = this.state;
 
         // @ts-ignore
         fetch("http://localhost:4001/login/", {
@@ -55,15 +58,30 @@ export class Login extends Component {
                     window.localStorage.setItem("loggedIn", true);
                     window.location.href="/userDashboard";
 
-                } else {
+                } else if (data.data.userType == "Admin"){
+                    this.setState({ admin: true });
+                    window.location.href="/adminDashboard";
+                }
+                else {
                     alert("Something went wrong");
                 }
+
+
             });
+
+        // if (data.data.userType == "Admin") {
+        //     //Update state using this.setState
+        //     this.setState({ admin: true });
+        //     window.location.href="/adminDashboard";
+        // }
 
     };
 
     render() {
+        // @ts-ignore
+        const { admin } = this.state;
         return (
+
             // <div className={"flex h-screen bg-black"}>
             //     {/*<h1 className={"text-center text-teal-800 text-3xl"}>This is Log In Page</h1>*/}
             //     <div className={"h-auto mt-4 mb-4 pl-9 mx-auto border-gray-500 border-2 bg-white"}>
@@ -92,6 +110,13 @@ export class Login extends Component {
             // </div>
 
             <div className={"w-full h-screen flex items-start"}>
+                {/*{admin ? (*/}
+                {/*    <Link to={"/AdminDashboard"}></Link>*/}
+
+                {/*) : (*/}
+                {/*    // @ts-ignore*/}
+                {/*    <Link to={"/userDashboard"}></Link>*/}
+                {/*)}*/}
                 <div className={"relative w-1/2 h-full flex flex-col"}>
                     <div className={"absolute top-[80%] left-[10%] flex flex-col"}>
                         <h1 className={"text-5xl text-white font-bold my-4"}>IT'S BETTER AS A MEMBER</h1>
@@ -102,15 +127,15 @@ export class Login extends Component {
 
                 <div className={"w-1/2 h-full bg-[#F5F5F5] flex flex-col p-20 justify-between items-center"}>
 
-                   {/* /!*<h1 className={"w-full max-w-[500px] mx-auto text-xl text-[#060606] font-semibold mr-auto"}>Nike</h1>*!/*/}
-                   {/* <a href="https://example.com" target="_blank" rel="noopener noreferrer">*/}
-                   {/* <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>*/}
-                   {/* /!*mr-[27rem]*!/*/}
-                   {/*<a/>*/}
+                    {/* /!*<h1 className={"w-full max-w-[500px] mx-auto text-xl text-[#060606] font-semibold mr-auto"}>Nike</h1>*!/*/}
+                    {/* <a href="https://example.com" target="_blank" rel="noopener noreferrer">*/}
+                    {/* <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>*/}
+                    {/* /!*mr-[27rem]*!/*/}
+                    {/*<a/>*/}
 
-                        <a href="/" target="_blank" rel="noopener noreferrer">
-                            <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>
-                        </a>
+                    <a href="/" target="_blank" rel="noopener noreferrer">
+                        <img className={"w-[90px] h-[70px] pb-4"} src={nikeLogo}/>
+                    </a>
                     <form onSubmit={this.handleSubmit}>
                         <div className={"w-full flex flex-col  max-w-[500px]"}>
                             <div className={"w-full flex flex-col mb-2"}>
@@ -143,9 +168,10 @@ export class Login extends Component {
 
                             <div className={"w-full flex flex-col my-4"}>
                                 <button type={"submit"} className={"w-full my-2 font-semibold text-white bg-[#060606] rounded-md p-4 text-center flex items-center justify-center cursor-pointer"}>
-                                    <Link to={'/userDashboard'}>
-                                        Log in
-                                    </Link>
+                                    {/*<Link to={'/AdminDashboard'}>*/}
+                                    {/*    Log in*/}
+                                    {/*</Link>*/}
+                                Log in
                                 </button>
                                 <button className={"w-full my-2 font-semibold text-[#060606] bg-white border  border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer"}>
                                     <Link to={'/Register'}>

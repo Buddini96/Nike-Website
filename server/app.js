@@ -9,6 +9,7 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const user = require('./model/userDetails');
 const JWT_SECRET = "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
+// import AdminHome from './Admindashboard';
 
 
 var indexRouter = require('./routes/index');
@@ -33,6 +34,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/register', usersRouter);
 app.use('/userDashboard', usersRouter);
+app.use('/adminDashboard', usersRouter);
+app.use('/userHome', usersRouter);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -71,7 +74,7 @@ require("../server/model/userDetails");
 const User = mongoose.model("UserInfo");
 
 app.post('/register', async (req, res) => {
-    const {name, email, password} = req.body;
+    const {name, email, password, userType} = req.body;
 
     const encryptedPassword = await bcrypt.hash(password, 10);
     try {
@@ -83,7 +86,8 @@ app.post('/register', async (req, res) => {
         await User.create({
             name,
             email,
-            password:encryptedPassword,
+            password: encryptedPassword,
+            userType
         });
         res.send({ status: 'ok' });
     } catch (error) {
@@ -96,12 +100,13 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req,res) => {
     const {email, password} = req.body;
 
-    //if email exist
+    //checking whether if email exist or not
     const user = await User.findOne({email});
     if(!user) {
         return res.json({error: "User Not Found"});
     }
-    //check password
+    //check password and  comparing and decrypting it
+    // because in register password field we encrypted
     if(await bcrypt.compare(password, user.password)){
         const token = jwt.sign({email:user.email }, JWT_SECRET);
 
@@ -112,6 +117,7 @@ app.post('/login', async (req,res) => {
         }
     }
     res.json({status: "error", error: "Invalid Password"});
+
 });
 
 app.post('/userData', async (req, res) => {

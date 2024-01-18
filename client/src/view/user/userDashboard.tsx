@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 // @ts-ignore
 import user from "../../assets/icons/user.png"
 // @ts-ignore
@@ -37,21 +37,77 @@ import person2 from "../../assets/images/persons/person5.jpg"
 import person3 from "../../assets/images/persons/person1.jpg"
 // @ts-ignore
 import nike from "../../assets/icons/nikeLogo.png"
+// @ts-ignore
+//import {AdminHome} from "../admin/AdminDashboard";
+import {Link, Route} from "react-router-dom";
+
+// @ts-ignore
+//import AdminHome from "../user/UserHome";
+// @ts-ignore
+//import userHome from "./userDashboard"
 
 
 
 export class UserDashboard extends Component {
+
     // @ts-ignore
     constructor(props) {
         super(props);
         this.state = {
             userData: "",
+            // admin: false,
         };
     }
+    // componentDidMount() {
+    //     //const [admin, setAdmin] = useState(false);
+    //     // @ts-ignore
+    //     const { admin, setAdmin} = useState(false);
+    //     // const [admin, setAdmin] = useState(false);
+    //     // @ts-ignore
+    //     // @ts-ignore
+    //     // @ts-ignore
+    //     fetch("http://localhost:4001/userData", {
+    //         method: "POST",
+    //         // @ts-ignore
+    //         crossDomain: true,
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "application/json",
+    //             "Access-Control-Allow-Origin": "*",
+    //         },
+    //         body: JSON.stringify({
+    //             // @ts-ignore
+    //             token: window.localStorage.getItem("token"),
+    //         }),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             console.log(data, "userData");
+    //             // this.setState({ admin});
+    //             if(data.data.userType == "Admin"){
+    //                 // @ts-ignore
+    //                 setAdmin(true);
+    //             }
+    //             this.setState({userData: data.data});
+    //             // if(data.status == "ok"){
+    //             //     alert("Login Successful")
+    //             // // @ts-ignore
+    //             // window.localStorage.setItem("token", data.data);
+    //             // window.location.href="/userDashboard";
+    //             // }
+    //         });
+    //
+    //     // const [isAdmin, setIsAdmin] = useState(true);
+    //     // if (isAdmin) {
+    //     //     // @ts-ignore
+    //     //     return <Redirect to="/AdminDashboard" />;
+    //     // } else {
+    //     //     // @ts-ignore
+    //     //     return <Redirect to="/userDashboard" />;
+    //     // }
+    // };
+
     componentDidMount() {
-        // @ts-ignore
-        // @ts-ignore
-        // @ts-ignore
         fetch("http://localhost:4001/userData", {
             method: "POST",
             // @ts-ignore
@@ -62,26 +118,28 @@ export class UserDashboard extends Component {
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
-                // @ts-ignore
                 token: window.localStorage.getItem("token"),
             }),
         })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data, "userData");
-                this.setState({userData: data.data});
-                // if(data.status == "ok"){
-                //     alert("Login Successful")
-                // // @ts-ignore
-                // window.localStorage.setItem("token", data.data);
-                // window.location.href="/userDashboard";
-                // }
+                // Update state using this.setState
+                this.setState({ userData: data.data });
+
+                if (data.data.userType == "Admin") {
+                    //Update state using this.setState
+                    this.setState({ admin: true });
+                    window.location.href="/adminDashboard";
+                }
             });
     };
 
+    // return admin ? <AdminHome /> : <UserHome userData={userData} />;
+
     logOut=() => {
         window.localStorage.clear();
-        window.location.href="/login";
+        window.location.href = "/login";
 }
 
 
@@ -121,8 +179,31 @@ export class UserDashboard extends Component {
 
     render() {
         // @ts-ignore
+        const { admin } = this.state;
+        // @ts-ignore
         const {userData} = this.state;
+        //const [isAdmin, setIsAdmin] = useState(true);
+        // @ts-ignore
+       // const [admin, setAdmin] = useState(false);
+
+        // if (admin) {
+        //         // @ts-ignore
+        //         return <Route path="/AdminDashboard" />;
+        //     } else {
+        //         // @ts-ignore
+        //         return <Route path="/userDashboard" />;
+        //     }
+
+
+
         return (
+            // {admin ? (
+            //         <Link to={"/AdminDashboard"}></Link>
+            //
+            //     ) : (
+            //         // @ts-ignore
+            //         <Link to={"/userDashboard"}></Link>
+            //     )};
             // <div className={"text-black justify-center items-center p-20"}>
             //
             //    Name
@@ -131,7 +212,20 @@ export class UserDashboard extends Component {
             //     <h1 className={"font-bold text-xl"}>{userData.email}</h1><br/>
             //     <button onClick={this.logOut} className={"border-2 bg-gray-400 p-2 border-black"}>Log Out</button>
             // </div>
+
+
         <div className={"px-10"}>
+
+                {/*{admin ? (*/}
+                {/*    <Link to={"/AdminDashboard"}></Link>*/}
+                {/*   */}
+                {/*    ) : (*/}
+                {/*    // @ts-ignore*/}
+                {/*    <Link to={"/userDashboard"}></Link>*/}
+                {/*    )};*/}
+
+                    {/*// <AdminDashboard /> : <UserDashboard/>}*/}
+
             <header className="text-gray-600 body-font">
                 <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                     <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">

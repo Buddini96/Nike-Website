@@ -1,13 +1,99 @@
-import {Component} from "react";
+import React, { Component, useEffect, useState } from "react";
+// @ts-ignore
+// import { AdminHome as AdminDashboard } from './AdminDashboard';   // Import your Admin component
+// @ts-ignore
+//import AdminDashboard1 from "./AdminDashboard";
+// @ts-ignore
+//import { userDashboard } from "./userDashboard";
 
+
+// @ts-ignore
+//import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+//import {UserDashboard} from "../user/userDashboard";
+// @ts-ignore
+// import {AdminDashboard} from "../user/AdminDashboard";
+
+// @ts-ignore
 export class AdminDashboard extends Component {
+    // @ts-ignore
+    constructor(props) {
+        super(props);
+        this.state = {
+            userData: "",
+
+        };
+    }
+
+    componentDidMount() {
+        fetch("http://localhost:4001/userData", {
+            method: "POST",
+            // @ts-ignore
+            crossDomain: true,
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                token: window.localStorage.getItem("token"),
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data, "userData");
+                // Update state using this.setState
+                this.setState({ userData: data.data });
+
+                //if (data.data.userType == "Admin") {
+                    // Update state using this.setState
+                    //this.setState({ admin: true });
+                        //window.location.href="/adminDashboard";
+                   // }
+                // else
+                //         window.location.href="/userDashboard";
+
+            });
+    };
+
+    logOut=() => {
+        window.localStorage.clear();
+        window.location.href = "/login";
+    };
+
     render() {
+        // @ts-ignore
+        const { admin } = this.state;
+        // @ts-ignore
+        const {userData} = this.state;
+        // @ts-ignore
+        // @ts-ignore
+        // @ts-ignore
+        // @ts-ignore
+        // @ts-ignore
         return (
+        // return admin ? <AdminHome /> : <UserHome userData={userData} />;
             <>
-                <div className={"relative flex min-h-screen"}>
+                {/*{admin ? (*/}
+                {/*    window.location.href = "/AdminDashboard"*/}
+
+                {/*    ) : (*/}
+                {/*    // @ts-ignore*/}
+
+                {/*    window.location.href = "/userDashboard"*/}
+                {/*    )}*/}
+                {/*{admin ? (*/}
+                {/*    <Redirect to="/AdminDashboard" />*/}
+                {/*) : (*/}
+                {/*    <Redirect to="/userDashboard" />*/}
+                {/*)}*/}
+                {/*{admin ? (*/}
+                    <div className={"relative flex min-h-screen"}>
 
                     {/*Sidebar*/}
-                    <div className={"bg-cyan-600 text-cyan-100 w-64 space-y-6 px-2 py-4"}>
+                    <div className={"bg-cyan-600 text-cyan-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 " +
+                        "left-0 md:relative md:-translate-x-0 transform -translate-x-full transition duration-200"}>
                         <a href={""} className={"flex items-center space-x-2 px-4 py-3"}>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  fill="none"
@@ -27,7 +113,7 @@ export class AdminDashboard extends Component {
                         </a>
                         <nav>
                             <a href={"/"} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-cyan-700 " +
-                                "rounded hover:text-cyan-300"}>
+                                "rounded hover:text-cyan-300 transition duration-200"}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      fill="none"
                                      viewBox="0 0 24 24"
@@ -44,7 +130,7 @@ export class AdminDashboard extends Component {
                                 <span className={"text-white group-hover:text-cyan-300"}>Dashboard</span>
                             </a>
                             <a href={"/"} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-cyan-700 " +
-                                "rounded hover:text-cyan-300"}>
+                                "rounded hover:text-cyan-300 transition duration-200"}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      fill="none"
                                      viewBox="0 0 24 24"
@@ -62,7 +148,7 @@ export class AdminDashboard extends Component {
                                 <span className={"text-white group-hover:text-cyan-300"}>Users</span>
                             </a>
                             <a href={"/"} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-cyan-700 " +
-                                "rounded hover:text-cyan-300"}>
+                                "rounded hover:text-cyan-300 transition duration-200"}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      fill="none"
                                      viewBox="0 0 24 24"
@@ -75,7 +161,7 @@ export class AdminDashboard extends Component {
                                 <span className={"text-white group-hover:text-cyan-300"}>Products</span>
                             </a>
                             <a href={"/"} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-cyan-700 " +
-                                "rounded hover:text-cyan-300"}>
+                                "rounded hover:text-cyan-300 transition duration-200"}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      fill="none"
                                      viewBox="0 0 24 24"
@@ -88,7 +174,7 @@ export class AdminDashboard extends Component {
                                 <span className={"text-white group-hover:text-cyan-300"}>Calander</span>
                             </a>
                             <a href={"/"} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-cyan-700 " +
-                                "rounded hover:text-cyan-300"}>
+                                "rounded hover:text-cyan-300 transition duration-200"}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      fill="none"
                                      viewBox="0 0 24 24"
@@ -110,8 +196,19 @@ export class AdminDashboard extends Component {
                         <div className={"bg-white shadow px-2 py-4"}>Header</div>
                         {/*content*/}
                         <div className={"p-8 text-cyan-700 font-extrabold"}>content</div>
+                        <div>
+                            Name<h1>{userData.name}</h1>
+                            Email <h1>{userData.email}</h1>
+                            <br />
+                            <button onClick={this.logOut} className="btn btn-primary">
+                                Log Out
+                            </button>
+                        </div>
                     </div>
                 </div>
+
+
+
             </>
         );
     }
