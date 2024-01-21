@@ -8,8 +8,8 @@ export class AdminDefaultLayout extends Component {
         return (
             <>
                 <AdminNavbar></AdminNavbar>
-                {/*<AdminMainContent></AdminMainContent>*/}
-                {/*<AdminFooter/>*/}
+                <AdminMainContent></AdminMainContent>
+
             </>
         );
     }

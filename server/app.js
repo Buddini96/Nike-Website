@@ -36,6 +36,8 @@ app.use('/register', usersRouter);
 app.use('/userDashboard', usersRouter);
 app.use('/adminDashboard', usersRouter);
 app.use('/userHome', usersRouter);
+app.use('/allUsers', usersRouter);
+
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -164,6 +166,15 @@ app.listen(4001, () => {
 // app.listen(4001, () => {
 //     console.log('Server is running on port 4000');
 // });
+
+app.get("/getAllUsers", async (req,res) => {
+    try {
+        const allUser = await User.find({});
+        res.send({status: "ok", data:allUser});
+    }catch (error) {
+        console.log(error);
+    }
+})
 
 
 module.exports = app;

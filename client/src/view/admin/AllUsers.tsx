@@ -1,22 +1,67 @@
-import React, { Component, useEffect, useState } from "react";
+import React, {Component} from "react";
 // @ts-ignore
 import nike from "../../assets/icons/white-icons/nike.png"
 // @ts-ignore
 import adminPro from "../../assets/icons/admin.png"
 
 
-// @ts-ignore
-export class AdminDashboard extends Component {
+interface UserData {
+    name: string;
+    email: string;
+    userType: string;
+}
+
+export class AllUsers extends Component {
     // @ts-ignore
     constructor(props) {
         super(props);
+        // @ts-ignore
         this.state = {
             userData: "",
-
+            data: [], // Assuming data is an array
+            // Initialize setData as a function
+            // @ts-ignore
+            setData: (newData) => {
+                this.setState({ data: newData });
+            },
         };
     }
 
+
+    // componentDidMount() {
+    //     fetch("http://localhost:4001/userData", {
+    //         method: "POST",
+    //         // @ts-ignore
+    //         crossDomain: true,
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "application/json",
+    //             "Access-Control-Allow-Origin": "*",
+    //         },
+    //         body: JSON.stringify({
+    //             token: window.localStorage.getItem("token"),
+    //         }),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             console.log(data, "userData");
+    //             // Update state using this.setState
+    //             this.setState({ userData: data.data });
+    //
+    //             //if (data.data.userType == "Admin") {
+    //             // Update state using this.setState
+    //             //this.setState({ admin: true });
+    //             //window.location.href="/adminDashboard";
+    //             // }
+    //             // else
+    //             //         window.location.href="/userDashboard";
+    //
+    //         });
+    // };
+
+
     componentDidMount() {
+        /*get all users data*/
         fetch("http://localhost:4001/userData", {
             method: "POST",
             // @ts-ignore
@@ -37,52 +82,54 @@ export class AdminDashboard extends Component {
                 this.setState({ userData: data.data });
 
                 //if (data.data.userType == "Admin") {
-                    // Update state using this.setState
-                    //this.setState({ admin: true });
-                        //window.location.href="/adminDashboard";
-                   // }
+                // Update state using this.setState
+                //this.setState({ admin: true });
+                //window.location.href="/adminDashboard";
+                // }
                 // else
                 //         window.location.href="/userDashboard";
 
             });
+
+        /*Get user current login data*/
+        // @ts-ignore
+        const {data, setData} = this.state;
+        fetch("http://localhost:4001/getAllUsers", {
+            method: "GET"
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data, "userData");
+                // Update state using this.setState
+                setData(data.data);
+
+            });
     };
 
-    logOut=() => {
-        window.localStorage.clear();
-        window.location.href = "/login";
-    };
 
+         logOut = () => {
+            window.localStorage.clear();
+            window.location.href = "/login";
+        };
+// @ts-ignore
     render() {
         // @ts-ignore
         const { admin } = this.state;
         // @ts-ignore
         const {userData} = this.state;
         // @ts-ignore
-        // @ts-ignore
-        // @ts-ignore
-        // @ts-ignore
+        const {data, setData} = this.state;
+        //const data = [];
+
         // @ts-ignore
         return (
-        // return admin ? <AdminHome /> : <UserHome userData={userData} />;
+            // return admin ? <AdminHome /> : <UserHome userData={userData} />;
             <>
-                {/*{admin ? (*/}
-                {/*    window.location.href = "/AdminDashboard"*/}
 
-                {/*    ) : (*/}
-                {/*    // @ts-ignore*/}
-
-                {/*    window.location.href = "/userDashboard"*/}
-                {/*    )}*/}
-                {/*{admin ? (*/}
-                {/*    <Redirect to="/AdminDashboard" />*/}
-                {/*) : (*/}
-                {/*    <Redirect to="/userDashboard" />*/}
-                {/*)}*/}
-                {/*{admin ? (*/}
-                    <div className={"relative flex min-h-screen"}>
+                <div className={"relative flex min-h-screen"}>
 
                     {/*Sidebar*/}
-                        <div className={"bg-coral-red text-cyan-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 " +
+                    <div className={"bg-coral-red text-cyan-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 " +
                         "left-0 md:relative md:-translate-x-0 transform -translate-x-full transition duration-200"}>
                         <a href={""} className={"flex items-center space-x-2 px-4 py-3 text-white"}>
                             {/*<svg xmlns="http://www.w3.org/2000/svg"*/}
@@ -138,7 +185,7 @@ export class AdminDashboard extends Component {
                                 </svg>
                                 <span className={"text-white group-hover:text-cyan-300"}>Users</span>
                             </a>
-                            <a href={""} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-[#ef4444] " +
+                            <a href={"/"} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-[#ef4444] " +
                                 "rounded hover:text-cyan-300 transition duration-200"}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      fill="none"
@@ -174,16 +221,16 @@ export class AdminDashboard extends Component {
                             <a className={"flex items-center group space-x-2 px-4 py-3 hover:bg-[#ef4444] " +
                                 "rounded hover:text-cyan-300 transition duration-200"}>
                                 <button onClick={this.logOut} className={""}>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     fill="none"
-                                     viewBox="0 0 24 24"
-                                     stroke-width="1.5"
-                                     stroke="currentColor"
-                                     className="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         fill="none"
+                                         viewBox="0 0 24 24"
+                                         stroke-width="1.5"
+                                         stroke="currentColor"
+                                         className="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25
                                           2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"/>
-                                </svg>
+                                    </svg>
                                 </button>
                                 {/*<button onClick={this.logOut} className="text-white group-hover:text-cyan-300">*/}
                                 {/*    Log Out*/}
@@ -193,19 +240,19 @@ export class AdminDashboard extends Component {
 
                             <a className={"flex items-center group space-x-2 py-3 px-4 hover:bg-[#ef4444] " +
                                 "rounded hover:text-cyan-300 content-end transition duration-200 mt-[315px]"}>
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         fill="none" viewBox="0 0 24 24"
-                                         stroke-width="1.5"
-                                         stroke="currentColor"
-                                         className="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor"
+                                     className="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25
                                               2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25
                                               2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25
                                               2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1
                                               1.183-1.981l7.5-4.039a2.25
                                               2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z"/>
-                                    </svg>
+                                </svg>
                                 <span className={"text-white group-hover:text-cyan-300"}>{userData.email}</span>
                             </a>
 
@@ -227,15 +274,31 @@ export class AdminDashboard extends Component {
                             </div>
                         </div>
                         {/*content*/}
-                        <div className={"p-8 text-cyan-700 font-extrabold"}>content</div>
-                        {/*<div className={""}>*/}
-                        {/*    Name<h1>{userData.name}</h1>*/}
-                        {/*    Email <h1>{userData.email}</h1>*/}
-                        {/*    <br />*/}
-                        {/*    <button onClick={this.logOut} className="btn btn-primary">*/}
-                        {/*        Log Out*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
+                        <div className={"p-8 text-cyan-700 font-extrabold"}>All Users</div>
+
+                        <table className={"w-full pr-3 justify-center items-center border-black"}>
+                            <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
+                            <tr className={""}>
+                                <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Name</th>
+                                <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Email</th>
+                                <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>User Type</th>
+                                <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Delete</th>
+                            </tr>
+                            </thead>
+
+
+
+                            {data && data.map((i: UserData) => (
+                                <tr className={"bg-white border-b-2 text-center"} key={i.email}>
+                                    <td className={"p-3 text-sm text-gray-700"}>{i.name}</td>
+                                    <td className={"p-3 text-sm text-gray-700"}>{i.email}</td>
+                                    <td className={"p-3 text-sm text-gray-700"}>{i.userType}</td>
+                                </tr>
+                            ))}
+
+
+                        </table>
+
                     </div>
                 </div>
 
