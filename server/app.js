@@ -167,6 +167,7 @@ app.listen(4001, () => {
 //     console.log('Server is running on port 4000');
 // });
 
+/*get all user detail*/
 app.get("/getAllUsers", async (req,res) => {
     try {
         const allUser = await User.find({});
@@ -175,6 +176,49 @@ app.get("/getAllUsers", async (req,res) => {
         console.log(error);
     }
 })
+
+/*delete user*/
+// app.post("/deleteUser", async (req,res) => {
+//     //first get user id from req body
+//     const {userid} = req.body;
+//     try {
+//         //delete data which id similar to userid.
+//         User.deleteOne(
+//         {_id:userid}, function (err, res){
+//                 console.log(err); //otherwise get this error
+//             });
+//         //if user successfully deleted get this reponse
+//         res.send({status: "ok", data:"Deleted"});
+//
+//     }catch (error) {
+//         console.log(error);
+//     }
+//
+// })
+
+app.post("/deleteUser", async (req, res) => {
+    // first get user id from req body
+    const { userid } = req.body;
+
+    try {
+        // delete data which id is similar to userid.
+        const result = await User.deleteOne({ _id: userid });
+
+        if (result.deletedCount === 1) {
+            // If user successfully deleted, send a success response
+            res.status(200).json({ success: true, data: "User deleted successfully" });
+        } else {
+            // If no user was deleted, send a response indicating failure
+            res.status(400).json({ success: false, data: "User not found or unable to delete" });
+        }
+    } catch (error) {
+        console.error("Error deleting user:", error);
+        // Send a response indicating server error
+        res.status(500).json({ success: false, data: "Internal Server Error" });
+    }
+});
+
+
 
 
 module.exports = app;

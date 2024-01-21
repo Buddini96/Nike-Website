@@ -3,9 +3,12 @@ import React, {Component} from "react";
 import nike from "../../assets/icons/white-icons/nike.png"
 // @ts-ignore
 import adminPro from "../../assets/icons/admin.png"
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 interface UserData {
+    _id: string;
     name: string;
     email: string;
     userType: string;
@@ -25,6 +28,7 @@ export class AllUsers extends Component {
                 this.setState({ data: newData });
             },
         };
+        this.deleteUser = this.deleteUser.bind(this);
     }
 
 
@@ -61,6 +65,7 @@ export class AllUsers extends Component {
 
 
     componentDidMount() {
+        this.getAllUsers();
         /*get all users data*/
         fetch("http://localhost:4001/userData", {
             method: "POST",
@@ -93,6 +98,18 @@ export class AllUsers extends Component {
 
         /*Get user current login data*/
         // @ts-ignore
+
+    };
+
+
+         logOut = () => {
+            window.localStorage.clear();
+            window.location.href = "/login";
+        };
+
+
+    getAllUsers = () => {
+        // @ts-ignore
         const {data, setData} = this.state;
         fetch("http://localhost:4001/getAllUsers", {
             method: "GET"
@@ -104,13 +121,75 @@ export class AllUsers extends Component {
                 setData(data.data);
 
             });
+    }
+
+    // @ts-ignore
+    deleteUser = (id, name) => {
+        if (window.confirm(`Are you sure you want to delete ${name}`)){
+            fetch("http://localhost:4001/deleteUser", {
+                method: "POST",
+                // @ts-ignore
+                crossDomain: true,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+                body: JSON.stringify({
+                    userid: id,
+                }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.success) {
+                        alert(data.data);
+                        // Call getAllUsers only after the delete request is successful
+                        this.getAllUsers();
+                    } else {
+                        alert("Failed to delete user");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error deleting user:", error);
+                    alert("Error deleting user");
+                });
+        }
     };
 
+    // deleteUser = (id, name) => {
+    //     if (window.confirm(`Are you sure you want to delete ${name}`)) {
+    //         fetch("http://localhost:4001/deleteUser", {
+    //             method: "POST",
+    //             // @ts-ignore
+    //             crossDomain: true,
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Accept: "application/json",
+    //                 "Access-Control-Allow-Origin": "*",
+    //             },
+    //             body: JSON.stringify({
+    //                 userid: id,
+    //             }),
+    //         })
+    //             .then((res) => res.json())
+    //             .then((data) => {
+    //                 if (data.success) {
+    //                     alert(data.data);
+    //                     // Call getAllUsers only after the delete request is successful
+    //                     this.getAllUsers();
+    //                 } else {
+    //                     alert("Failed to delete user");
+    //                 }
+    //             })
+    //             .catch((error) => {
+    //                 console.error("Error deleting user:", error);
+    //                 alert("Error deleting user");
+    //             });
+    //     }
+    // };
 
-         logOut = () => {
-            window.localStorage.clear();
-            window.location.href = "/login";
-        };
+
+
 // @ts-ignore
     render() {
         // @ts-ignore
@@ -121,6 +200,7 @@ export class AllUsers extends Component {
         const {data, setData} = this.state;
         //const data = [];
 
+        // @ts-ignore
         // @ts-ignore
         return (
             // return admin ? <AdminHome /> : <UserHome userData={userData} />;
@@ -275,34 +355,37 @@ export class AllUsers extends Component {
                         </div>
                         {/*content*/}
                         <div className={"p-8 text-cyan-700 font-extrabold"}>All Users</div>
-
-                        <table className={"w-full pr-3 justify-center items-center border-black"}>
-                            <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
-                            <tr className={""}>
-                                <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Name</th>
-                                <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Email</th>
-                                <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>User Type</th>
-                                <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Delete</th>
-                            </tr>
-                            </thead>
-
-
-
-                            {data && data.map((i: UserData) => (
-                                <tr className={"bg-white border-b-2 text-center"} key={i.email}>
-                                    <td className={"p-3 text-sm text-gray-700"}>{i.name}</td>
-                                    <td className={"p-3 text-sm text-gray-700"}>{i.email}</td>
-                                    <td className={"p-3 text-sm text-gray-700"}>{i.userType}</td>
+                        <div className={""}>
+                            <table className={"w-full pr-3 justify-center items-center border-black"}>
+                                <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
+                                <tr className={""}>
+                                    <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Name</th>
+                                    <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Email</th>
+                                    <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>User Type</th>
+                                    <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Delete</th>
                                 </tr>
-                            ))}
+                                </thead>
 
+                                {data && data.map((i: UserData) => (
+                                    <tr className={"bg-white border-b-2 text-center"} key={i.email}>
+                                        <td className={"p-3 text-sm text-gray-700"}>{i.name}</td>
+                                        <td className={"p-3 text-sm text-gray-700"}>{i.email}</td>
+                                        <td className={"p-3 text-sm text-gray-700"}>{i.userType}</td>
+                                        <td>
+                                            <FontAwesomeIcon
+                                                icon={faTrash}
+                                                onClick={() => this.deleteUser(i._id, i.name)}
+                                            />
+                                        </td>
+                                    </tr>
+                                ))}
 
-                        </table>
-
+                            </table>
+                        </div>
                     </div>
+
+
                 </div>
-
-
 
             </>
         );
