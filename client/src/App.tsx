@@ -8,6 +8,7 @@ import {UserDashboard} from "./view/user/userDashboard";
 import {AdminDefaultLayout} from "./view/admin/AdminDefaultLayout/AdminDefaultLayout";
 import {AdminDashboard} from "./view/admin/AdminDashboard";
 import {AllUsers} from "./view/admin/AllUsers";
+import {ManageProducts} from "./view/admin/ManageProducts";
 
 function App() {
     const isLoggedIn = window.localStorage.getItem("loggedIn");
@@ -51,7 +52,7 @@ function App() {
               <Route path={"/userDashboard"} Component={UserDashboard}></Route>
               <Route path={"/allUsers"} Component={AllUsers}></Route>
               <Route path={"/adminDashboard"} Component={AdminDashboard}></Route>
-
+              <Route path={"/manageProducts"} Component={ManageProducts}></Route>
 
           </Routes>
       </BrowserRouter>

@@ -265,7 +265,7 @@ export class AllUsers extends Component {
                                 </svg>
                                 <span className={"text-white group-hover:text-cyan-300"}>Users</span>
                             </a>
-                            <a href={"/"} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-[#ef4444] " +
+                            <a href={"/manageProducts"} className={"flex items-center group space-x-2 px-4 py-3 hover:bg-[#ef4444] " +
                                 "rounded hover:text-cyan-300 transition duration-200"}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      fill="none"
@@ -355,7 +355,7 @@ export class AllUsers extends Component {
                         </div>
                         {/*content*/}
                         <div className={"p-8 text-cyan-700 font-extrabold"}>All Users</div>
-                        <div className={""}>
+                        <div className={"p-9"}>
                             <table className={"w-full pr-3 justify-center items-center border-black"}>
                                 <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
                                 <tr className={""}>
