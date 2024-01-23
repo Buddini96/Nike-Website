@@ -3,13 +3,14 @@ import React, { useEffect, useState, Component } from "react";
 import nike from "../../assets/icons/white-icons/nike.png"
 // @ts-ignore
 import adminPro from "../../assets/icons/admin.png"
-import {faTrash, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faTrash, faXmark, faPenToSquare} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {ThemeProvider} from "@material-tailwind/react";
 // @ts-ignore
 import axios from "axios";
 
 import value = ThemeProvider.propTypes.value;
+import {data} from "autoprefixer";
 
 // @ts-ignore
 // axios.defaults.baseUrl = "http://localhost:4001/";
@@ -33,7 +34,7 @@ export class ManageProducts extends Component {
             dataList: [],
             formData: {},
         };
-
+        this.getFetchData = this.getFetchData.bind(this);
     }
 
     // componentDidMount() {
@@ -68,7 +69,56 @@ export class ManageProducts extends Component {
     //     this.getFetchData();
     // };
 
+    // componentDidMount() {
+    //     fetch("http://localhost:4001/userData", {
+    //         method: "POST",
+    //         // @ts-ignore
+    //         crossDomain: true,
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "application/json",
+    //             "Access-Control-Allow-Origin": "*",
+    //         },
+    //         body: JSON.stringify({
+    //             token: window.localStorage.getItem("token"),
+    //         }),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             console.log(data, "userData");
+    //             this.setState({ userData: data.data });
+    //         });
+    //     this.getFetchData(); // Call getFetchData directly here
+    // }
+
+    // componentDidMount() {
+    //     fetch("http://localhost:4001/userData", {
+    //         method: "POST",
+    //         // @ts-ignore
+    //         crossDomain: true,
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "application/json",
+    //             "Access-Control-Allow-Origin": "*",
+    //         },
+    //         body: JSON.stringify({
+    //             token: window.localStorage.getItem("token"),
+    //         }),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             console.log(data, "userData");
+    //             this.setState({ userData: data.data });
+    //             // Call getFetchData after setting up the user data
+    //             this.getFetchData();
+    //         });
+    // }
     componentDidMount() {
+        this.fetchUserData();
+        this.getFetchData();
+    }
+
+    fetchUserData = () => {
         fetch("http://localhost:4001/userData", {
             method: "POST",
             // @ts-ignore
@@ -87,8 +137,21 @@ export class ManageProducts extends Component {
                 console.log(data, "userData");
                 this.setState({ userData: data.data });
             });
-        this.getFetchData(); // Call getFetchData directly here
-    }
+    };
+
+    // @ts-ignore
+    getFetchData = async () => {
+        try {
+            const data = await axios.get("http://localhost:4001/getAll");
+            console.log(data);
+            if (data.data.success) {
+                this.setState({ dataList: data.data.data });
+
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     logOut = () => {
         window.localStorage.clear();
@@ -144,6 +207,7 @@ export class ManageProducts extends Component {
                 setAddSection(false)
                 // @ts-ignore
                 alert(data.data.message);
+                this.getFetchData();
             }
         }
 
@@ -165,27 +229,22 @@ export class ManageProducts extends Component {
             }));
         };
 
-        // const getFetchData = async ()=>{
-        //     const data = await axios.get("http://localhost:4001/getAll");
-        //     console.log(data);
-        //     if(data.data.success){
-        //         setDataList(data.data.data);
-        //         // @ts-ignore
-        //         // alert(data.data.message);
-        //     }
-        // }
-
-        this.getFetchData = async () => {
+        // @ts-ignore
+        const handleDelete = async (id) => {
             try {
-                const data = await axios.get("http://localhost:4001/getAll");
-                console.log(data);
+                const data = await axios.delete(`http://localhost:4001/delete/${id}`);
+                alert(data.data.message);
+
                 if (data.data.success) {
-                    this.setState({ dataList: data.data.data });
+                    this.getFetchData();
                 }
+                // Update the state or perform any other necessary actions after successful deletion
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error("Error deleting product:", error);
+                // Handle error or show a user-friendly message
             }
         };
+
 
         console.log(dataList);
             // @ts-ignore
@@ -451,7 +510,7 @@ export class ManageProducts extends Component {
 
 
                                 <div className={"p-9 "}>
-                                    <table className={"w-full pr-3 justify-center items-center border-black"}>
+                                    <table className={"w-full pr-3 justify-center items-center border-black shadow-2xl"}>
                                         <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
                                         <tr className={""}>
                                             <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Product Id</th>
@@ -459,6 +518,9 @@ export class ManageProducts extends Component {
                                             <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Price</th>
                                             <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Currency</th>
                                             <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Image</th>
+                                            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Edit</th>
+                                            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Delete</th>
+
                                         </tr>
                                         </thead>
 
@@ -473,11 +535,22 @@ export class ManageProducts extends Component {
                                                     <td className={"p-3 text-sm text-gray-700"}>{el.price}</td>
                                                     <td className={"p-3 text-sm text-gray-700"}>{el.currency}</td>
                                                     <td className={"p-3 text-sm text-gray-700"}>{el.image}</td>
-                                                    {/*<td>*/}
-                                                    {/*    <FontAwesomeIcon*/}
-                                                    {/*        icon={faTrash}*/}
-                                                    {/*    />*/}
-                                                    {/*</td>*/}
+                                                    <td>
+                                                        <FontAwesomeIcon
+                                                            icon={faPenToSquare}
+                                                            className={"bg-yellow-400 p-1.5 rounded-md"}
+
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <FontAwesomeIcon
+                                                            icon={faTrash}
+                                                            className={"bg-red-600 p-1.5 rounded-md"}
+                                                            // @ts-ignore
+                                                            onClick={() => handleDelete(el._id)}
+
+                                                        />
+                                                    </td>
                                                 </tr>
                                             );
                                         })}
@@ -509,8 +582,5 @@ export class ManageProducts extends Component {
         }
 
 
-    private getFetchData() {
-
-    }
 }
 

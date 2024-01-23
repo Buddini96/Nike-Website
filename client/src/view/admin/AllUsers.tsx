@@ -356,7 +356,7 @@ export class AllUsers extends Component {
                         {/*content*/}
                         <div className={"p-8 text-cyan-700 font-extrabold"}>All Users</div>
                         <div className={"p-9"}>
-                            <table className={"w-full pr-3 justify-center items-center border-black"}>
+                            <table className={"w-full pr-3 justify-center items-center border-black shadow-2xl"}>
                                 <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
                                 <tr className={""}>
                                     <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Name</th>
