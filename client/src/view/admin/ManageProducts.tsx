@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useState, Component } from "react";
 // @ts-ignore
 import nike from "../../assets/icons/white-icons/nike.png"
 // @ts-ignore
@@ -31,8 +31,31 @@ export class ManageProducts extends Component {
             image: "",
             userData: "",
             addSection: false,
+            editSection: false,
             dataList: [],
-            formData: {},
+            formData: {
+                id: "",
+                name: "",
+                price: "",
+                currency: "",
+                image: "",
+            },
+
+            setFormDataEdit: {
+                id: "",
+                name: "",
+                price: "",
+                currency: "",
+                image: "",
+            },
+            editData: {  // State to store data for editing
+                id: '',
+                name: '',
+                price: '',
+                currency: '',
+                image: '',
+            },
+
         };
         this.getFetchData = this.getFetchData.bind(this);
     }
@@ -161,17 +184,34 @@ export class ManageProducts extends Component {
     // @ts-ignore
     render() {
         // @ts-ignore
+        const {editSection, editData } = this.state;
+        // @ts-ignore
         const {admin} = this.state;
         // @ts-ignore
         const {userData} = this.state;
         // @ts-ignore
         const {addSection} = this.state;
         // @ts-ignore
+        //const {editSection} = this.state;
+        // @ts-ignore
+        let {setEditSection} = this.state;
+        // @ts-ignore
+        //const {formDataEdit, setFormDataEdit} = this.state;
+        //     id: "",
+        //     name: "",
+        //     price: "",
+        //     currency: "",
+        //     image: "",
+        // });
+
+        // @ts-ignore
         let {setAddSection} = this.state;
         // @ts-ignore
         const {dataList} = this.state;
         // @ts-ignore
         const {setDataList} = this.state;
+        // @ts-ignore
+
         // @ts-ignore
         //const {dataList, formData } = this.state;
 
@@ -212,8 +252,97 @@ export class ManageProducts extends Component {
         }
 
         // @ts-ignore
-        const {formData} = this.state;
+        const handleUpdate = async (e) => {
+            e.preventDefault();
 
+            try {
+                // Use formDataEdit to send the updated data to the server
+                // @ts-ignore
+                const data = await axios.put(`http://localhost:4001/update/${this.state.formDataEdit.id}`, this.state.formDataEdit);
+                console.log(data);
+
+                if (data.data.success) {
+                    this.setState({ editSection: false });
+                    // @ts-ignore
+                    alert(data.data.message);
+                    this.getFetchData();
+                }
+            } catch (error) {
+                console.error("Error updating product:", error);
+                // Handle error or show a user-friendly message
+            }
+        }
+
+        // @ts-ignore
+        setEditSection = (id) => {
+            this.setState({ editSection: id });
+        };
+
+        // @ts-ignore
+        // const handleEditOnChange = async (e) => {
+        //
+        //     const {value, name} = e.target;
+        //
+        //     // @ts-ignore
+        //     this.setState((prev) => ({
+        //         setEditSection: {
+        //             // @ts-ignore
+        //             ...prev.formData,
+        //             [name]: value,
+        //         },
+        //     }));
+        // }
+
+        const handleEditOnChange = async (e) => {
+            const { name, value } = e.target;
+            this.setState(prevState => ({
+                editData: {
+                    // @ts-ignore
+                    ...prevState.editData,
+                    [name]: value,
+                },
+            }));
+        }
+
+        // @ts-ignore
+        const handleEdit =  (id) => {
+            // // Set the editSection to true
+            // this.setState({ editSection: true });
+            //
+            // // Set the data for the selected item in the form
+            // this.setState({
+            //     formDataEdit: {
+            //         id: el.id,
+            //         name: el.name,
+            //         price: el.price,
+            //         currency: el.currency,
+            //         image: el.image,
+            //     },
+            // });
+
+            // Find the product with the given id in dataList
+            // @ts-ignore
+            const selectedProduct = this.state.dataList.find(product => product._id === id);
+
+            if (selectedProduct) {
+                // Update the state with the data of the selected product
+                this.setState({
+                    editData: {
+                        id: selectedProduct.id,
+                        name: selectedProduct.name,
+                        price: selectedProduct.price,
+                        currency: selectedProduct.currency,
+                        image: selectedProduct.image,
+                    },
+                    editSection: true,
+                });
+            }
+        }
+
+        // @ts-ignore
+        const {formData} = this.state;
+        // @ts-ignore
+        const {formDataEdit} = this.state;
 
         // @ts-ignore
         const handleOnChange = (e) => {
@@ -413,7 +542,6 @@ export class ManageProducts extends Component {
                                             onClick={() => this.setState({addSection: true})}>Add
                                     </button>
 
-
                                     {
                                         addSection && (
                                             <div
@@ -468,47 +596,61 @@ export class ManageProducts extends Component {
                                         )
                                     }
 
+                                    {
+                                        editSection && (
+                                            <div
+                                                className={"absolute right-0 left-0 top-0 bottom-0 flex justify-center items-center"}>
+                                                <form onSubmit={handleUpdate}
+                                                      className={"h-auto p-2 justify-center bg-[#f1f5f9] p-9 items-center rounded-md shadow-2xl"}>
+                                                    <FontAwesomeIcon
+                                                        icon={faXmark}
+                                                        onClick={() => this.setState({editSection: false})}
+                                                        className={"ml-[320px] mb-[20px] cursor-pointer"}
+                                                    />
+                                                    <div className={"pb-2"}>
+                                                        <label className={"text-12px pl-5 p-5"} htmlFor={""}>Product Id
+                                                            : </label>
+                                                        <input className={"float-right border-[2px]  border-teal-700"}
+                                                               name={"id"} type={"number"} onChange={handleEditOnChange}/>
+                                                    </div>
 
+                                                    <div className={"pb-2"}>
+                                                        <label className={"text-12px pl-5"} htmlFor={""}>Name : </label>
+                                                        <input className={"float-right border-[2px] border-teal-700"}
+                                                               name={"name"} type={"text"} onChange={handleEditOnChange}/>
+                                                    </div>
+
+                                                    <div className={"pb-2"}>
+                                                        <label className={"text-12px pl-5"} htmlFor={""}>Price : </label>
+                                                        <input className={"float-right border-[2px] border-teal-700"}
+                                                               name={"price"}  type={"number"} onChange={handleEditOnChange}/>
+                                                    </div>
+
+                                                    <div className={"pb-2"}>
+                                                        <label className={"text-12px pl-5"} htmlFor={""}>Currency : </label>
+                                                        <input className={"float-right border-[2px] border-teal-700"}
+                                                               name={"currency"}  type={"text"} onChange={handleEditOnChange}/>
+                                                    </div>
+
+                                                    <div className={"pb-2"}>
+                                                        <label className={"text-12px pl-5"} htmlFor={""}>Image : </label>
+                                                        <input className={"float-right border-[2px] border-teal-700"}
+                                                               name={"image"}  type={"text"} onChange={handleEditOnChange}/>
+                                                    </div>
+
+                                                    <div className={"mt-2 pl-20  w-full"}>
+                                                        <button
+                                                            className={"p-1 items-start  w-full bg-teal-700 text-[14px] mt-5 rounded-md text-white font-bold hover:bg-black"}
+                                                            type={"submit"}>
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        )
+                                    }
 
                                 </div>
-                                {/*<div className={"p-9 "}>*/}
-                                {/*    <table className={"w-full pr-3 justify-center items-center border-black"}>*/}
-                                {/*        <thead className={"bg-gray-50 border-b-2 border-gray-200"}>*/}
-                                {/*        <tr className={""}>*/}
-                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Product Id</th>*/}
-                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Name</th>*/}
-                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Price</th>*/}
-                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Currency</th>*/}
-                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Image</th>*/}
-                                {/*        </tr>*/}
-                                {/*        </thead>*/}
-
-                                {/*        {*/}
-                                {/*            // @ts-ignore*/}
-                                {/*            dataList.map((el) => {*/}
-                                {/*                return (*/}
-                                {/*                    <tr className={"bg-white border-b-2 text-center"}>*/}
-                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.id</td>*/}
-                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.name</td>*/}
-                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.price</td>*/}
-                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.currency</td>*/}
-                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.image</td>*/}
-                                {/*                        /!*<td>*!/*/}
-                                {/*                        /!*    <FontAwesomeIcon*!/*/}
-                                {/*                        /!*        icon={faTrash}*!/*/}
-                                {/*                        /!*    />*!/*/}
-                                {/*                        /!*</td>*!/*/}
-
-
-                                {/*                    </tr>*/}
-                                {/*                )*/}
-                                {/*            }*/}
-                                {/*        }*/}
-
-                                {/*    </table>*/}
-                                {/*</div>*/}
-
-
                                 <div className={"p-9 "}>
                                     <table className={"w-full pr-3 justify-center items-center border-black shadow-2xl"}>
                                         <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
@@ -539,7 +681,7 @@ export class ManageProducts extends Component {
                                                         <FontAwesomeIcon
                                                             icon={faPenToSquare}
                                                             className={"bg-yellow-400 p-1.5 rounded-md"}
-
+                                                            onClick={() => handleEdit(el._id)}
                                                         />
                                                     </td>
                                                     <td>
@@ -572,7 +714,6 @@ export class ManageProducts extends Component {
                                         </tbody>
                                     </table>
                                 </div>
-
 
                             </div>
                         </div>
