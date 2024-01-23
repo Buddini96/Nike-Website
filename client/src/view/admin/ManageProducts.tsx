@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, { useEffect, useState, Component } from "react";
 // @ts-ignore
 import nike from "../../assets/icons/white-icons/nike.png"
 // @ts-ignore
@@ -30,8 +30,43 @@ export class ManageProducts extends Component {
             image: "",
             userData: "",
             addSection: false,
+            dataList: [],
+            formData: {},
         };
+
     }
+
+    // componentDidMount() {
+    //     fetch("http://localhost:4001/userData", {
+    //         method: "POST",
+    //         // @ts-ignore
+    //         crossDomain: true,
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: "application/json",
+    //             "Access-Control-Allow-Origin": "*",
+    //         },
+    //         body: JSON.stringify({
+    //             token: window.localStorage.getItem("token"),
+    //         }),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             console.log(data, "userData");
+    //             // Update state using this.setState
+    //             this.setState({userData: data.data});
+    //
+    //             //if (data.data.userType == "Admin") {
+    //             // Update state using this.setState
+    //             //this.setState({ admin: true });
+    //             //window.location.href="/adminDashboard";
+    //             // }
+    //             // else
+    //             //         window.location.href="/userDashboard";
+    //
+    //         });
+    //     this.getFetchData();
+    // };
 
     componentDidMount() {
         fetch("http://localhost:4001/userData", {
@@ -50,19 +85,10 @@ export class ManageProducts extends Component {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data, "userData");
-                // Update state using this.setState
-                this.setState({userData: data.data});
-
-                //if (data.data.userType == "Admin") {
-                // Update state using this.setState
-                //this.setState({ admin: true });
-                //window.location.href="/adminDashboard";
-                // }
-                // else
-                //         window.location.href="/userDashboard";
-
+                this.setState({ userData: data.data });
             });
-    };
+        this.getFetchData(); // Call getFetchData directly here
+    }
 
     logOut = () => {
         window.localStorage.clear();
@@ -79,11 +105,35 @@ export class ManageProducts extends Component {
         const {addSection} = this.state;
         // @ts-ignore
         let {setAddSection} = this.state;
+        // @ts-ignore
+        const {dataList} = this.state;
+        // @ts-ignore
+        const {setDataList} = this.state;
+        // @ts-ignore
+        //const {dataList, formData } = this.state;
 
         // @ts-ignore
         setAddSection = (value) => {
             this.setState({addSection: value});
         };
+
+        // @ts-ignore
+        // const getFetchData = async () => {
+        //     try {
+        //         const data = await axios.get("http://localhost:4001/getAll");
+        //         console.log(data);
+        //         if (data.data.success) {
+        //             this.setState({ dataList: data.data.data });
+        //         }
+        //     } catch (error) {
+        //         console.error("Error fetching data:", error);
+        //     }
+        // };
+
+        // useEffect(()=>{
+        //     getFetchData();
+        // },[]);
+
 
         // @ts-ignore
         const handleSubmit = async (e) => {
@@ -115,8 +165,32 @@ export class ManageProducts extends Component {
             }));
         };
 
+        // const getFetchData = async ()=>{
+        //     const data = await axios.get("http://localhost:4001/getAll");
+        //     console.log(data);
+        //     if(data.data.success){
+        //         setDataList(data.data.data);
+        //         // @ts-ignore
+        //         // alert(data.data.message);
+        //     }
+        // }
+
+        this.getFetchData = async () => {
+            try {
+                const data = await axios.get("http://localhost:4001/getAll");
+                console.log(data);
+                if (data.data.success) {
+                    this.setState({ dataList: data.data.data });
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        console.log(dataList);
             // @ts-ignore
-            return (
+            // @ts-ignore
+        return (
                 <>
                     <div className={"relative flex min-h-screen"}>
 
@@ -336,7 +410,96 @@ export class ManageProducts extends Component {
                                     }
 
 
+
                                 </div>
+                                {/*<div className={"p-9 "}>*/}
+                                {/*    <table className={"w-full pr-3 justify-center items-center border-black"}>*/}
+                                {/*        <thead className={"bg-gray-50 border-b-2 border-gray-200"}>*/}
+                                {/*        <tr className={""}>*/}
+                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Product Id</th>*/}
+                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Name</th>*/}
+                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Price</th>*/}
+                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Currency</th>*/}
+                                {/*            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Image</th>*/}
+                                {/*        </tr>*/}
+                                {/*        </thead>*/}
+
+                                {/*        {*/}
+                                {/*            // @ts-ignore*/}
+                                {/*            dataList.map((el) => {*/}
+                                {/*                return (*/}
+                                {/*                    <tr className={"bg-white border-b-2 text-center"}>*/}
+                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.id</td>*/}
+                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.name</td>*/}
+                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.price</td>*/}
+                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.currency</td>*/}
+                                {/*                        <td className={"p-3 text-sm text-gray-700"}>el.image</td>*/}
+                                {/*                        /!*<td>*!/*/}
+                                {/*                        /!*    <FontAwesomeIcon*!/*/}
+                                {/*                        /!*        icon={faTrash}*!/*/}
+                                {/*                        /!*    />*!/*/}
+                                {/*                        /!*</td>*!/*/}
+
+
+                                {/*                    </tr>*/}
+                                {/*                )*/}
+                                {/*            }*/}
+                                {/*        }*/}
+
+                                {/*    </table>*/}
+                                {/*</div>*/}
+
+
+                                <div className={"p-9 "}>
+                                    <table className={"w-full pr-3 justify-center items-center border-black"}>
+                                        <thead className={"bg-gray-50 border-b-2 border-gray-200"}>
+                                        <tr className={""}>
+                                            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Product Id</th>
+                                            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Name</th>
+                                            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Price</th>
+                                            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Currency</th>
+                                            <th className={"p-3 text-sm font-semibold tracking-wide text-center"}>Image</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                        {dataList && Array.isArray(dataList) && dataList.map((el) => {
+                                            console.log("Object in dataList:", el);
+                                            return (
+                                                <tr className={"bg-white border-b-2 text-center"} key={el.id}>
+                                                    <td className={"p-3 text-sm text-gray-700"}>{el.id}</td>
+                                                    <td className={"p-3 text-sm text-gray-700"}>{el.name}</td>
+                                                    <td className={"p-3 text-sm text-gray-700"}>{el.price}</td>
+                                                    <td className={"p-3 text-sm text-gray-700"}>{el.currency}</td>
+                                                    <td className={"p-3 text-sm text-gray-700"}>{el.image}</td>
+                                                    {/*<td>*/}
+                                                    {/*    <FontAwesomeIcon*/}
+                                                    {/*        icon={faTrash}*/}
+                                                    {/*    />*/}
+                                                    {/*</td>*/}
+                                                </tr>
+                                            );
+                                        })}
+
+                                        {/*{dataList.map((el) => (*/}
+                                        {/*    <tr className={"bg-white border-b-2 text-center"} key={el.id}>*/}
+                                        {/*        <td className={"p-3 text-sm text-gray-700"}>{el.id}</td>*/}
+                                        {/*        <td className={"p-3 text-sm text-gray-700"}>{el.name}</td>*/}
+                                        {/*        <td className={"p-3 text-sm text-gray-700"}>{el.price}</td>*/}
+                                        {/*        <td className={"p-3 text-sm text-gray-700"}>{el.currency}</td>*/}
+                                        {/*        <td className={"p-3 text-sm text-gray-700"}>{el.image}</td>*/}
+                                        {/*        /!*<td>*!/*/}
+                                        {/*        /!*    <FontAwesomeIcon*!/*/}
+                                        {/*        /!*        icon={faTrash}*!/*/}
+                                        {/*        /!*    />*!/*/}
+                                        {/*        /!*</td>*!/*/}
+                                        {/*    </tr>*/}
+                                        {/*))}*/}
+                                        </tbody>
+                                    </table>
+                                </div>
+
 
                             </div>
                         </div>
@@ -344,5 +507,10 @@ export class ManageProducts extends Component {
                 </>
             );
         }
+
+
+    private getFetchData() {
+
     }
+}
 

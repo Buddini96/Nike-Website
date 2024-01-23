@@ -215,14 +215,14 @@ export class AdminDashboard extends Component {
                     {/*Main content*/}
                     <div className={"flex-1"}>
                         {/*header*/}
-                        <div className={"flex justify-between items-center max-container bg-white shadow px-2 py-4"}>Header
+                        <div className={"flex justify-between items-center max-container text-cyan-700 font-extrabold bg-white shadow px-8 py-4"}>Dashboard
                             <div className={"flex justify-center items-center max-container ml-5"}>
                                 <span className={"px-6"}>
                                     <div className={"bg-coral-red rounded-full w-11 h-11 "}>
                                         <img className={"w-10 h-10 items-center justify-center pl-1"} src={adminPro}/>
                                     </div>
                                 </span>
-                                <span className="pr-3 text-xl">Hello  </span>
+                                <span className="pr-3 text-xl text-black font-semibold">Hello  </span>
                                 <span className="pr-6 text-xl font-bold text-coral-red">{userData.name}</span>
                             </div>
                         </div>
