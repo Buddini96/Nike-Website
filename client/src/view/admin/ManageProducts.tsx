@@ -256,14 +256,12 @@ export class ManageProducts extends Component {
             e.preventDefault();
 
             try {
-                // Use formDataEdit to send the updated data to the server
                 // @ts-ignore
-                const data = await axios.put(`http://localhost:4001/update/${this.state.formDataEdit.id}`, this.state.formDataEdit);
+                const data = await axios.put(`http://localhost:4001/update/${this.state.editData.id}`, this.state.editData);
                 console.log(data);
 
                 if (data.data.success) {
                     this.setState({ editSection: false });
-                    // @ts-ignore
                     alert(data.data.message);
                     this.getFetchData();
                 }
@@ -271,7 +269,9 @@ export class ManageProducts extends Component {
                 console.error("Error updating product:", error);
                 // Handle error or show a user-friendly message
             }
-        }
+        };
+
+
 
         // @ts-ignore
         setEditSection = (id) => {
@@ -611,38 +611,38 @@ export class ManageProducts extends Component {
                                                         <label className={"text-12px pl-5 p-5"} htmlFor={""}>Product Id
                                                             : </label>
                                                         <input className={"float-right border-[2px]  border-teal-700"}
-                                                               name={"id"} type={"number"} onChange={handleEditOnChange}/>
+                                                               name={"id"} type={"number"} value={editData.id} onChange={handleEditOnChange}/>
                                                     </div>
 
                                                     <div className={"pb-2"}>
                                                         <label className={"text-12px pl-5"} htmlFor={""}>Name : </label>
                                                         <input className={"float-right border-[2px] border-teal-700"}
-                                                               name={"name"} type={"text"} onChange={handleEditOnChange}/>
+                                                               name={"name"} type={"text"} value={editData.name} onChange={handleEditOnChange}/>
                                                     </div>
 
                                                     <div className={"pb-2"}>
                                                         <label className={"text-12px pl-5"} htmlFor={""}>Price : </label>
                                                         <input className={"float-right border-[2px] border-teal-700"}
-                                                               name={"price"}  type={"number"} onChange={handleEditOnChange}/>
+                                                               name={"price"}  type={"number"} value={editData.price} onChange={handleEditOnChange}/>
                                                     </div>
 
                                                     <div className={"pb-2"}>
                                                         <label className={"text-12px pl-5"} htmlFor={""}>Currency : </label>
                                                         <input className={"float-right border-[2px] border-teal-700"}
-                                                               name={"currency"}  type={"text"} onChange={handleEditOnChange}/>
+                                                               name={"currency"}  type={"text"} value={editData.currency} onChange={handleEditOnChange}/>
                                                     </div>
 
                                                     <div className={"pb-2"}>
                                                         <label className={"text-12px pl-5"} htmlFor={""}>Image : </label>
                                                         <input className={"float-right border-[2px] border-teal-700"}
-                                                               name={"image"}  type={"text"} onChange={handleEditOnChange}/>
+                                                               name={"image"}  type={"text"} value={editData.image} onChange={handleEditOnChange}/>
                                                     </div>
 
                                                     <div className={"mt-2 pl-20  w-full"}>
                                                         <button
                                                             className={"p-1 items-start  w-full bg-teal-700 text-[14px] mt-5 rounded-md text-white font-bold hover:bg-black"}
                                                             type={"submit"}>
-                                                            Submit
+                                                            Update
                                                         </button>
                                                     </div>
                                                 </form>

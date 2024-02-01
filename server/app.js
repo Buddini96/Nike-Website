@@ -108,14 +108,17 @@ app.post('/save', async (req,res) => {
 
 //update product
 //http://localhost:4001/update
-app.put('/update', async (req,res) => {
+app.put('/update/:id', async (req,res) => {
     console.log(req.body);
-    const {id, ...rest} = req.body;
+    const {_id, ...rest} = req.body;
     console.log(rest);
-    const data = await Product.updateOne({_id : id},rest);
+    const data = await Product.updateOne({_id : _id},rest);
+    //const data = await Product.findByIdAndUpdate(_id, rest);
     //await data.save();
-    res.send({success : true, message : "data updated successfully", data : data});
+    res.send({success : true, message : "data updated successfully", data : data})
 });
+
+
 
 //delete product
 //http://localhost:4001/delete/65ae33e9478e626cd1df05c2
