@@ -1,8 +1,14 @@
 import React, {Component, useState} from "react";
 // @ts-ignore
+import {Footer} from "../common/Footer/Footer";
+// @ts-ignore
+import styles from '../../App.css'
+// @ts-ignore
 import user from "../../assets/icons/user.png"
 // @ts-ignore
 import bg from "../../assets/images/galleryImg/img9.jpg"
+// @ts-ignore
+import  footerLogo from "../../assets/icons/footer-logo.svg"
 
 // @ts-ignore
 import img1 from "../../assets/products/user/Nike City Classic.jpeg"
@@ -40,6 +46,9 @@ import nike from "../../assets/icons/nikeLogo.png"
 // @ts-ignore
 //import {AdminHome} from "../admin/AdminDashboard";
 import {Link, Route} from "react-router-dom";
+import {Testimonial} from "../common/Testimonial/Testimonial";
+import {Services} from "../common/Services/Services";
+
 
 // @ts-ignore
 //import AdminHome from "../user/UserHome";
@@ -214,7 +223,7 @@ export class UserDashboard extends Component {
             // </div>
 
 
-        <div className={"px-10"}>
+        <div className={""}>
 
                 {/*{admin ? (*/}
                 {/*    <Link to={"/AdminDashboard"}></Link>*/}
@@ -252,7 +261,7 @@ export class UserDashboard extends Component {
                 </div>
             </header>
 
-            <section id={"home"} className="text-gray-600 body-font">
+            <section id={"home"} className="text-gray-600 body-font px-20">
                     <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
                         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                             <img className="object-cover object-center rounded w-[500px] h-[450px]" alt="hero"
@@ -267,9 +276,10 @@ export class UserDashboard extends Component {
                                 <br className="hidden lg:inline-block"/>Thank you for joining us.
                                 <br className="hidden lg:inline-block"/>Get ready to walk the talk of style.
                             </h1>
-                            <p className="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom
-                                neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote
-                                bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+                            <p className="mb-8 leading-relaxed">Welcome to the journey! Lace-up and join us in the
+                                world of style and performance. Thanks for choosing Nike – get ready to walk the talk
+                                of style with every step you take! Unleash your potential and make every stride a
+                                statement.</p>
                             <div className="flex justify-center">
                                 <button
                                     className="inline-flex text-white bg-coral-red border-0 py-2 px-6
@@ -285,7 +295,7 @@ export class UserDashboard extends Component {
                 </section>
 
         {/*Products*/}
-            <section id={"products"} className="text-gray-600 body-font">
+            <section id={"products"} className="text-gray-600 body-font px-20">
                     <div className="container px-5 py-24 mx-auto">
                         <div className="flex flex-wrap -m-4">
                             <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -380,92 +390,20 @@ export class UserDashboard extends Component {
                     </div>
                 </section>
 
-        {/*Services*/}
-            <section id={"services"} className="text-gray-600 body-font">
-                <div className="container px-5 py-24 mx-auto">
-                    <div className="flex flex-col text-center w-full mb-20">
-                        <h2 className="text-sm text-coral-red tracking-widest font-medium title-font mb-1">Nike's
-                            Services</h2>
-                        <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">
-                            Innovation, Excellence, Ultimate Athletic Experience.</h1>
-                    </div>
-                    <div className="flex flex-wrap -m-4">
-                        <div className="p-4 md:w-1/3">
-                            <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                                <div className="flex items-center mb-3">
-                                    <div
-                                        className="w-10 h-10 mr-3 inline-flex items-center justify-center rounded-full
-                                        bg-coral-red text-white flex-shrink-0">
-                                        <img className={"w-7 h-7"} src={delivery} alt={''}/>
-                                    </div>
-                                    <h2 className="text-gray-900 text-lg title-font font-medium">Quick Delivery</h2>
-                                </div>
-                                <div className="flex-grow">
-                                    <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four
-                                        dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                                    <a className="mt-3 text-coral-red inline-flex items-center">Learn More
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                             stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2"
-                                             viewBox="0 0 24 24">
-                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="p-4 md:w-1/3">
-                            <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                                <div className="flex items-center mb-3">
-                                    <div
-                                        className="w-10 h-10 mr-3 inline-flex items-center justify-center rounded-full
-                                        bg-coral-red text-white flex-shrink-0">
-                                        <img className={"w-6 h-6"} src={payment} alt={''}/>
-                                    </div>
-                                    <h2 className="text-gray-900 text-lg title-font font-medium">Payment Security</h2>
-                                </div>
-                                <div className="flex-grow">
-                                    <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four
-                                        dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                                    <a className="mt-3 text-coral-red inline-flex items-center">Learn More
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                             stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2"
-                                             viewBox="0 0 24 24">
-                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="p-4 md:w-1/3">
-                            <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                                <div className="flex items-center mb-3">
-                                    <div
-                                        className="w-10 h-10 mr-3 inline-flex items-center justify-center rounded-full
-                                        bg-coral-red text-white flex-shrink-0">
-                                        <img className={"w-6 h-6"} src={support} alt={''}/>
-                                    </div>
-                                    <h2 className="text-gray-900 text-lg title-font font-medium">Dedicated Support</h2>
-                                </div>
-                                <div className="flex-grow">
-                                    <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four
-                                        dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                                    <a className="mt-3 text-coral-red inline-flex items-center">Learn More
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                             stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2"
-                                             viewBox="0 0 24 24">
-                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div className="px-20">
+                <Services/>
+            </div>
+
 
         {/*Exlusive deals*/}
-            <section className="text-gray-600 body-font">
-                <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+            <section className="text-gray-600 body-font px-20">
+                <div className="flex flex-col text-center w-full mb-20">
+                    <h2 className="text-sm text-coral-red tracking-widest font-medium title-font mb-1">Exclusive Deals,
+                        Exclusively Yours</h2>
+                    <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">
+                        Seize the moment, step in style. Limited time, limitless possibilities!</h1>
+                </div>
+                <div className="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
                     <div
                         className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left
                         mb-16 md:mb-0 items-center text-center">
@@ -485,202 +423,19 @@ export class UserDashboard extends Component {
                         </div>
                     </div>
                     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                        <img className="object-cover object-center rounded w-[650px] h-[550px]" alt="hero"
+                        <img className="object-cover object-center rounded w-[650px] h-[500px]" alt="hero"
                              src={exclusive}/>
 
                     </div>
                 </div>
             </section>
 
-        {/*Testimonalas*/}
-            <section id={"testimonials"} className="text-gray-600 body-font">
-                <div className="container px-5 py-24 mx-auto">
-                    <div className="flex flex-wrap -m-4">
-                        <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
-                            <div className="h-full text-center">
-                                <img alt="testimonial"
-                                     className="w-20 h-20 mb-8  object-cover object-center rounded-full inline-block
-                                     border-2 border-gray-200 bg-gray-100 w-[150px] h-[150px]"
-                                     src={person1}/>
-                                    <p className="leading-relaxed">Nike has been my go-to for as long as I can remember.
-                                        The quality, the innovation, the style – it’s unmatched. From the basketball
-                                        court to the streets, Nike is a game-changer. Just do it, and you won’t regret
-                                        it!.</p>
-                                    <span className="inline-block h-1 w-10 rounded bg-coral-red mt-6 mb-4"></span>
-                                    <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">
-                                        John D.</h2>
-                                    <p className={"text-gray-500"}>Fitness Enthusiast</p>
+            <div className="px-20">
+                <Testimonial/>
+            </div>
 
-                            </div>
-                        </div>
-                        <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
-                            <div className="h-full text-center">
-                                <img alt="testimonial"
-                                     className="w-20 h-20 mb-8 object-fit: cover  object-cover object-center rounded-full inline-block
-                                     border-2 border-gray-200 bg-gray-100 w-[150px] h-[150px]"
-                                     src={person2}/>
-                                    <p className="leading-relaxed">Nike isn’t just sportswear; it’s a fashion statement.
-                                        The versatility of their products lets me seamlessly transition from gym
-                                        sessions to street style & fashion-forward approach keeps me on top of
-                                        the game.</p>
-                                    <span className="inline-block h-1 w-10 rounded bg-coral-red mt-6 mb-4"></span>
-                                    <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">
-                                        Amanda R.</h2>
-                                    <p className="text-gray-500">Young Athlete</p>
-                            </div>
-                        </div>
-                        <div className="lg:w-1/3 lg:mb-0 p-4">
-                            <div className="h-full text-center">
-                                <img alt="testimonial"
-                                     className="w-20 h-20 mb-8 object-fit: cover  object-cover object-center rounded-full inline-block
-                                     border-2 border-gray-200 bg-gray-100 w-[150px] h-[150px]"
-                                     src={person3}/>
-                                    <p className="leading-relaxed">My sneaker collection is incomplete without Nike.
-                                        The designs are next level, and the limited editions are a treasure. Every
-                                        pair tells a story, and I’m proud to be part of the Nike legacy. Swoosh life
-                                        forever!</p>
-                                    <span className="inline-block h-1 w-10 rounded bg-coral-red mt-6 mb-4"></span>
-                                    <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">
-                                        Carlos M.</h2>
-                                    <p className="text-gray-500">Sneaker Head</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-        {/*Footer*/}
-            <footer className="text-white body-font bg-[#16191E]">
-                <div
-                    className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col text-white">
-                    <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-                        <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                            {/*<div className={"w-10 h-10 text-white p-3 bg-coral-red rounded-full"}>*/}
-                            {/*    <img className={"w-10 h-10 text-white p-3 bg-coral-red rounded-full"} src={nike} alt={''}/>*/}
-                            {/*</div>*/}
-                            <div className={"hover:bg-gray"}>
-                                <img className={"w-12 h-12 text-white p-2 bg-white rounded-full "} src={nike} alt={''}/>
-                            </div>
-
-                            {/*<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"*/}
-                            {/*     stroke-linecap="round" stroke-linejoin="round" stroke-width="2"*/}
-                            {/*     className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">*/}
-                            {/*    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>*/}
-                            {/*</svg>*/}
-                            <span className="ml-3 text-xl">Tailblocks</span>
-                        </a>
-                        <p className="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
-                    </div>
-                    <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-                        <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
-                            <nav className="list-none mb-10">
-                                <li>
-                                    <a className="text-white hover:text-gray-800">First Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Second Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Third Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Fourth Link</a>
-                                </li>
-                            </nav>
-                        </div>
-                        <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
-                            <nav className="list-none mb-10">
-                                <li>
-                                    <a className="text-white hover:text-gray-800">First Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Second Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Third Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Fourth Link</a>
-                                </li>
-                            </nav>
-                        </div>
-                        <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
-                            <nav className="list-none mb-10">
-                                <li>
-                                    <a className="text-white hover:text-gray-800">First Link</a>
-                                </li>
-                                <li>
-                                    <a className="ttext-white hover:text-gray-800">Second Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Third Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Fourth Link</a>
-                                </li>
-                            </nav>
-                        </div>
-                        <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
-                            <nav className="list-none mb-10">
-                                <li>
-                                    <a className="text-white hover:text-gray-800">First Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Second Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Third Link</a>
-                                </li>
-                                <li>
-                                    <a className="text-white hover:text-gray-800">Fourth Link</a>
-                                </li>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-                <div className="bg-[#16191E]">
-                    <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-                        <p className="text-gray-500 text-sm text-center sm:text-left">© 2024 Nike —
-                            <a href="https://twitter.com/knyttneve" rel="noopener noreferrer"
-                               className="text-gray-600 ml-1" target="_blank">@Nike</a>
-                        </p>
-                        <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        <a className="text-gray-500">
-          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5"
-               viewBox="0 0 24 24">
-            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-          </svg>
-        </a>
-        <a className="ml-3 text-gray-500">
-          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5"
-               viewBox="0 0 24 24">
-            <path
-                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-          </svg>
-        </a>
-        <a className="ml-3 text-gray-500">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-               className="w-5 h-5" viewBox="0 0 24 24">
-            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-          </svg>
-        </a>
-        <a className="ml-3 text-gray-100">
-          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"
-               className="w-5 h-5" viewBox="0 0 24 24">
-            <path stroke="none"
-                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-            <circle cx="4" cy="4" r="2" stroke="none"></circle>
-          </svg>
-        </a>
-      </span>
-                    </div>
-                </div>
-            </footer>
+            <Footer/>
 
         </div>
         );

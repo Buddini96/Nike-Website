@@ -5,7 +5,7 @@ import spanish from "../../../assets/products/spinach.webp";
 import tomato from "../../../assets/products/tomato.webp";
 // @ts-ignore
 import beans from "../../../images/products/beans.jpg";
-import {Product} from "../../common/Product/Product";
+
 // @ts-ignore
 import arrowRight from "../../../assets/icons/arrow-right.svg"
 
@@ -13,7 +13,10 @@ import arrowRight from "../../../assets/icons/arrow-right.svg"
 import shoe from "../../../assets/products/bg-shoes2.jpg"
 // @ts-ignore
 import background2 from "../../../assets/images/bg2.webp"
-import {Link} from "react-router-dom";
+
+import {Services} from "../../common/Services/Services";
+import {Testimonial} from "../../common/Testimonial/Testimonial";
+import {GiftContent} from "../../common/Gift/GiftContent";
 
 export const statistics = [
     { value: '1k+', label: 'Brands' },
@@ -23,31 +26,9 @@ export const statistics = [
 
 
 export class Home extends Component {
-    constructor(props: {} | Readonly<{}>) {
-        super(props);
-        this.state = {
-            data:[],
-        }
-    }
-    componentDidMount() {
-        this.fetchData();
-    }
-
-    fetchData = async () => {
-        try {
-            const response = await fetch('./product-data.json');
-            const jsonData = await response.json();
-            this.setState({data: jsonData})
-
-        }catch (error){
-            console.log("Error fetching data" , error)
-        }
-    }
 
     render() {
 
-        // @ts-ignore
-        const {data} = this.state;
         // @ts-ignore
         return (
             <>
@@ -85,25 +66,7 @@ export class Home extends Component {
                 </section>
 
                 <section id={"brand"}>
-                    <button>
-                        <Link to={'/AdminDashboard'}>
-                            Admin
-                        </Link>
-                    </button>
-                    {/*<div className={"relative"}>*/}
-                    {/*    <img src={background2} alt='background 2'  className={"absolute object-cover mix-blend-overlay"} />*/}
-                    {/*    <div className='flex justify-start items-start flex-wrap w-full mt-10 gap-16 pt-5'>*/}
-                    {/*        {statistics.map((stat, index) => (*/}
-                    {/*            <div key={index}>*/}
-                    {/*                <p className='text-4xl font-palanquin font-bold'>{stat.value}</p>*/}
-                    {/*                <p className='leading-7 font-montserrat text-slate-gray'>*/}
-                    {/*                    {stat.label}*/}
-                    {/*                </p>*/}
-                    {/*            </div>*/}
-                    {/*        ))}*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    <div className={"w-full h-96  mt-[90px]"}>
+                    <div className={"w-full h-96  mt-[150px]"}>
                         <div className={"relative"}>
                             {/*<h1>Hello</h1>*/}
                             <img src={background2} alt='background 2'  className={"absolute object-cover mix-blend-overlay"} />
@@ -121,6 +84,11 @@ export class Home extends Component {
 
                     </div>
                 </section>
+
+                <GiftContent/>
+
+                <Services/>
+                <Testimonial/>
 
             </>
 
