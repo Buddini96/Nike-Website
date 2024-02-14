@@ -30,7 +30,7 @@ export class Contact extends Component {
         return (
             <div className={"antialiased "}>
                 <div className={"flex w-full justify-center items-center"}>
-                    <div className={"mb-16 flex flex-col md:flex-row md:space-x-8 md:space-y-0 space-y-6 bg-coral-red " +
+                    <div className={"mb-16 flex flex-col md:flex-row md:space-x-8 md:space-y-0 space-y-6 bg-[#272c4a] " +
                         "w-full max-w-5xl sm:p-8 pt-5 pb-1 rounded-xl shadow-lg text-white overflow-hidden"}>
                         <div className={"flex flex-col space-y-8 justify-between "}>
                             <div>
@@ -113,7 +113,7 @@ export class Contact extends Component {
                                             "focus:ring-teal-300"}/>
                                     </div>
 
-                                    <button className={"inline-block self-end bg-coral-red text-white font-bold " +
+                                    <button className={"inline-block self-end bg-[#272c4a] text-white font-bold " +
                                         "rounded-md px-6 py-2 uppercase text-sm"}>Send Message</button>
 
                                 </form>

@@ -52,9 +52,10 @@ export class Home extends Component {
                             your active life.
                         </p>
 
-                        <button className={"flex justify-center items-center gap-2 px-7 py-4 border font-montserrat text-lg mb-7" +
-                            "leading-none bg-coral-red text-white border-coral-red rounded-full w-[200px]"}>
-                            <img src={arrowRight} alt='arrow right'  className={"ml-2 rounded-full bg-white w-5 h-5 "} />
+                        <button className={"flex gap-2 text-[18px] text-white\n" +
+                            "                                   bg-coral-red px-4 py-3 rounded-3xl mr-4\n" +
+                            "                                   hover:bg-[#272c4a] font-bold"}>
+                            <img src={arrowRight} alt='arrow right'  className={" ml-2 rounded-full bg-white w-5 h-5 "} />
                             Shop Now</button>
                     </div>
 

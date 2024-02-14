@@ -29,8 +29,7 @@ export class About extends Component {
                             {/*<button*/}
                             {/*    className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button*/}
                             {/*</button>*/}
-                            <button className={"inline-flex text-white border-0 py-2 px-7 " +
-                                "focus:outline-none hover:bg-indigo-600 rounded text-lg rounded-2xl bg-coral-red gap-2 px-7 py-4"}>
+                            <button className={"inline-flex text-white bg-coral-red hover:bg-[#272c4a] font-bold rounded-3xl mr-5 gap-2 px-5 py-2"}>
                                 <img src={arrowRight} alt='arrow right px-3'  className={"ml-1 rounded-full bg-white w-5 h-5"} />
                                 View </button>
                         </div>

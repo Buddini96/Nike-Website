@@ -67,54 +67,7 @@ export class UserDashboard extends Component {
             // admin: false,
         };
     }
-    // componentDidMount() {
-    //     //const [admin, setAdmin] = useState(false);
-    //     // @ts-ignore
-    //     const { admin, setAdmin} = useState(false);
-    //     // const [admin, setAdmin] = useState(false);
-    //     // @ts-ignore
-    //     // @ts-ignore
-    //     // @ts-ignore
-    //     fetch("http://localhost:4001/userData", {
-    //         method: "POST",
-    //         // @ts-ignore
-    //         crossDomain: true,
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Accept: "application/json",
-    //             "Access-Control-Allow-Origin": "*",
-    //         },
-    //         body: JSON.stringify({
-    //             // @ts-ignore
-    //             token: window.localStorage.getItem("token"),
-    //         }),
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data, "userData");
-    //             // this.setState({ admin});
-    //             if(data.data.userType == "Admin"){
-    //                 // @ts-ignore
-    //                 setAdmin(true);
-    //             }
-    //             this.setState({userData: data.data});
-    //             // if(data.status == "ok"){
-    //             //     alert("Login Successful")
-    //             // // @ts-ignore
-    //             // window.localStorage.setItem("token", data.data);
-    //             // window.location.href="/userDashboard";
-    //             // }
-    //         });
-    //
-    //     // const [isAdmin, setIsAdmin] = useState(true);
-    //     // if (isAdmin) {
-    //     //     // @ts-ignore
-    //     //     return <Redirect to="/AdminDashboard" />;
-    //     // } else {
-    //     //     // @ts-ignore
-    //     //     return <Redirect to="/userDashboard" />;
-    //     // }
-    // };
+
 
     componentDidMount() {
         fetch("http://localhost:4001/userData", {
@@ -251,8 +204,7 @@ export class UserDashboard extends Component {
                     </nav>
                     {/*<button onClick={this.logOut} className={"border-2 bg-gray-400 p-2 border-black"}>Log Out</button>*/}
                     <button
-                        onClick={this.logOut} className="inline-flex items-center bg-coral-red border-0 p-2
-                        focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">LogOut
+                        onClick={this.logOut} className="inline-flex text-white items-center bg-coral-red border-0 bg-coral-red px-4 py-2 hover:bg-[#272c4a] rounded-3xl ">LogOut
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                              stroke-width="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -271,7 +223,7 @@ export class UserDashboard extends Component {
                         <div
                             className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left
                             items-center text-center">
-                            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Lace-up and
+                            <h1 className="title-font  text-[42px] mb-4 font-medium text-gray-900">Lace-up and
                                 ready to go!
                                 <br className="hidden lg:inline-block"/>Thank you for joining us.
                                 <br className="hidden lg:inline-block"/>Get ready to walk the talk of style.
@@ -282,8 +234,7 @@ export class UserDashboard extends Component {
                                 statement.</p>
                             <div className="flex justify-center">
                                 <button
-                                    className="inline-flex text-white bg-coral-red border-0 py-2 px-6
-                                    focus:outline-none hover:bg-indigo-600 rounded text-lg">Shop
+                                    className="inline-flex text-[17px] text-white items-center bg-coral-red font-bold border-0 bg-coral-red px-6 py-2 hover:bg-[#272c4a] rounded-3xl">Shop
                                 </button>
                                 {/*<button*/}
                                 {/*    className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6
@@ -417,8 +368,7 @@ export class UserDashboard extends Component {
                             every stride."</p>
                         <div className="flex justify-center">
                             <button
-                                className="inline-flex text-white bg-coral-red border-0 py-2 px-6 focus:outline-none
-                                hover:bg-indigo-600 rounded text-lg">Explore
+                                className="inline-flex text-white items-center bg-coral-red border-0 bg-coral-red px-4 py-2 hover:bg-[#272c4a] rounded-3xl">Explore
                             </button>
                         </div>
                     </div>
